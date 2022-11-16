@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -36,4 +35,3 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 =======
 # cms-react-training
 LevelUp React training
->>>>>>> 0ce7a08227f7c3451ada43cf87d984c57218afc2
