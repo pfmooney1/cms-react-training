@@ -1,30 +1,25 @@
 import react from 'react';
 import staticData from '../../staticData';
 import comicstyles from '../../styles/Comic.module.css';
+import Detail from './detail';
+import Image from 'next/image';
 
 function Comic() {
 	let mappedTitles = staticData.map(element => {
 		return (
 			<div className={comicstyles.comic} >
-				<img src={element.thumbnail} />
-				<div className={comicstyles.detail}>
-					<h3 className={comicstyles.detail_label}>ID Number:</h3>
-					<h3 className={comicstyles.detail_data}>{element.id}</h3>
-
-					<h3 className={comicstyles.detail_label}>Title: </h3>
-					<h3 className={comicstyles.detail_data}>{element.title}</h3>
-
-					<h3 className={comicstyles.detail_label}>Issue:</h3>
-					<h3 className={comicstyles.detail_data}>{element.issueNumber}</h3>
-
-					<h3 className={comicstyles.detail_label}>Date Published:</h3>
-					<h3 className={comicstyles.detail_data}>{element.publishDate}</h3>
-				</div>
+				<Image
+					src={element.thumbnail}
+					alt="comic"
+					width={250}
+					height={400}
+				/>
+				<Detail element={element} />
 			</div>
 		);
 	});
 	return (
-		<div className='comics'>
+		<div className={comicstyles.comics} style={{display: "flex", flexWrap: "wrap",}}>
 			{mappedTitles}
 		</div>
 	)
