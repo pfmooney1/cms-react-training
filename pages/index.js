@@ -6,7 +6,6 @@ import Comic from './components/comic';
 import Script from 'next/script';
 
 export default function Home() {
-	console.log(staticData);
 	return (
 		<div className={styles.container}>
 			<Head>
