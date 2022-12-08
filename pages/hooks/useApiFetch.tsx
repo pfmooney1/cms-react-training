@@ -31,7 +31,7 @@ export function useApiFetch() {
 	const [comicsData, getComicsData] = useState(sampleData);
 
 	useEffect(() => {
-		const url = "http://gateway.marvel.com/v1/public/comics?ts=1&apikey=deeef1f1563086552c1c70bec9bad13c&hash=3907e3cae8ca9355f8ef1bced483e9ad";
+		const url : string = "http://gateway.marvel.com/v1/public/comics?ts=1&apikey=deeef1f1563086552c1c70bec9bad13c&hash=3907e3cae8ca9355f8ef1bced483e9ad";
 		console.log("Loading...");
 		const fetchData = async () => {
 			try {

@@ -9,6 +9,6 @@ export function Button_detail({ element }) {
 				<Script src="https://kit.fontawesome.com/1703951958.js" crossorigin="anonymous" />
 			</button>
 	)
-}
+};
 
 export default Button_detail;

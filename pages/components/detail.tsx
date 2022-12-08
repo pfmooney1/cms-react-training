@@ -1,6 +1,6 @@
 import react from 'react';
 import comicstyles from '../../styles/Comic.module.css';
-import Button_detail from './button-detail';
+import Button_detail from './button-detail.tsx';
 
 export function Detail({ element }) {
 	let ms = element.dates[0].date;

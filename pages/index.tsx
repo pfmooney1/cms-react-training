@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import staticData from '../staticData';
-import Comic from './components/comic';
+import staticData from '../staticData.tsx';
+import Comic from './components/comic.tsx';
 import Script from 'next/script';
 
 export default function Home() {

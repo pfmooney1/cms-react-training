@@ -1,15 +1,15 @@
 import react, { useEffect, useState } from 'react';
 import staticData from '../../staticData';
 import comicstyles from '../../styles/Comic.module.css';
-import Detail from './detail';
+import Detail from './detail.tsx';
 import Image from 'next/image';
-import { useApiFetch } from '../hooks/useApiFetch';
+import { useApiFetch } from '../hooks/useApiFetch.tsx';
 
 function Comic() {
 	const [comicsData] = useApiFetch();
 
 	var mappedData = comicsData.map(element => {
-			let img;
+			let img : string;
 			if (element.thumbnail.extension == "") {
 				img = "/" + element.thumbnail.path;
 			}
@@ -17,7 +17,7 @@ function Comic() {
 				img = element.thumbnail.path + "." + element.thumbnail.extension;
 			}
 			return (
-				<div className={comicstyles.comic} >
+				<div className={comicstyles.comic} key={element.id}>
 					<Image
 						src={img}
 						alt="comic"
