@@ -1,8 +1,29 @@
 import react from 'react';
 import comicstyles from '../../styles/Comic.module.css';
-import Button_detail from './button-detail.tsx';
-
-export function Detail({ element }) {
+import Button_detail from './button-detail';
+	interface dataInterface {
+		"id": number,
+		"title": string,
+		"issueNumber": number,
+		"description": string,
+		"pageCount": number,
+		"series": {
+			"resourceURI": string,
+			"name": string
+		},
+		"dates": [
+			{ "type": string, "date": any },
+			{ "type": string, "date": any }
+		],
+		"thumbnail": {
+			"path": string,
+			"extension": string
+		},
+		"creators": any,
+		"characters": any,
+		"events": any
+	};
+export function Detail({ element }: any) {
 	let ms = element.dates[0].date;
 	let datething = new Date(ms);
 	let x = datething.toLocaleDateString('en-us', { weekday: "short", year: "numeric", month: "short", day: "numeric" });

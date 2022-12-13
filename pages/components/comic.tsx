@@ -1,9 +1,9 @@
 import react, { useEffect, useState } from 'react';
 import staticData from '../../staticData';
 import comicstyles from '../../styles/Comic.module.css';
-import Detail from './detail.tsx';
+import Detail from './detail';
 import Image from 'next/image';
-import { useApiFetch } from '../hooks/useApiFetch.tsx';
+import { useApiFetch } from '../hooks/useApiFetch';
 
 function Comic() {
 	const [comicsData] = useApiFetch();
