@@ -1,46 +1,38 @@
 import react from 'react';
 import comicstyles from '../../styles/Comic.module.css';
-import Button_detail from './button-detail';
-	interface dataInterface {
-		"id": number,
-		"title": string,
-		"issueNumber": number,
-		"description": string,
-		"pageCount": number,
-		"series": {
-			"resourceURI": string,
-			"name": string
-		},
-		"dates": [
-			{ "type": string, "date": any },
-			{ "type": string, "date": any }
-		],
-		"thumbnail": {
-			"path": string,
-			"extension": string
-		},
-		"creators": any,
-		"characters": any,
-		"events": any
-	};
+
 export function Detail({ element }: any) {
-	let ms = element.dates[0].date;
-	let datething = new Date(ms);
-	let x = datething.toLocaleDateString('en-us', { weekday: "short", year: "numeric", month: "short", day: "numeric" });
+	const months = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"];	
+	let ogDate = element.dates[0].date;
+	let rawDate = new Date(ogDate);
+	let month = rawDate.getMonth();
+	let day = rawDate.getDate();
+	let year = rawDate.getFullYear();
+	let dateToWrite = `${months[month]} ${day}, ${year}`;
+	let creators = "N/A";
+	if (element.creators.items.length > 0) {
+		creators = element.creators.items[0].name;
+	}
+	console.log(element.creators.items);
 	return (
 		<div className={comicstyles.detail}>
-			<Button_detail />
-			<h3 className={comicstyles.detail_label}>ID Number:</h3>
-			<h3 className={comicstyles.detail_data}>{element.id}</h3>
+			<h3>{element.title}</h3>
+			<ul>
+				<li>
+					<span className={comicstyles.detail_label}>Issue:   </span>
+					<span className={comicstyles.detail_data}>{element.issueNumber}</span>
+				</li>
 
-			<h3 className={comicstyles.detail_label}>Title: </h3>
-			<h3 className={comicstyles.detail_data}>{element.title}</h3>
+				<li>
+					<span className={comicstyles.detail_label}>Published:</span><br />
+					<span className={comicstyles.detail_data}>{dateToWrite}</span>
+				</li>
 
-			<h3 className={comicstyles.detail_label}>Issue:</h3>
-			<h3 className={comicstyles.detail_data}>{element.issueNumber}</h3>
-
-			<h3 className={comicstyles.detail_label}>Date Published:</h3>
-			<h3 className={comicstyles.detail_data}>{ms}</h3>
+				<li>
+					<span className={comicstyles.detail_label}>Creators:</span><br />
+					<span className={comicstyles.detail_data}>{creators}</span>
+				</li>
+			</ul>
 		</div>
 	)
 }

@@ -4,11 +4,33 @@ import comicstyles from '../../styles/Comic.module.css';
 import Detail from './detail';
 import Image from 'next/image';
 import { useApiFetch } from '../hooks/useApiFetch';
+import Button_detail from './button-detail';
 
 function Comic() {
 	const [comicsData] = useApiFetch();
-
-	var mappedData = comicsData.map(element => {
+	interface dataInterface {
+		"id": number,
+		"title": string,
+		"issueNumber": number,
+		"description": string,
+		"pageCount": number,
+		"series": {
+			"resourceURI": string,
+			"name": string
+		},
+		"dates": [
+			{ "type": string, "date": any },
+			{ "type": string, "date": any }
+		],
+		"thumbnail": {
+			"path": string,
+			"extension": string
+		},
+		"creators": any,
+		"characters": any,
+		"events": any
+	};
+	var mappedData = comicsData<dataInterface>.map(element => {
 			let img : string;
 			if (element.thumbnail.extension == "") {
 				img = "/" + element.thumbnail.path;
@@ -21,9 +43,10 @@ function Comic() {
 					<Image
 						src={img}
 						alt="comic"
-						width={250}
-						height={400}
+						width={185}
+						height={275}
 					/>
+					<Button_detail />
 					<Detail element={element} />
 				</div>
 			);
