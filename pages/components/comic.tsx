@@ -1,12 +1,14 @@
 import react, { useEffect, useState } from 'react';
-import staticData from '../../staticData';
 import comicstyles from '../../styles/Comic.module.css';
 import Detail from './detail';
 import Image from 'next/image';
 import { useApiFetch } from '../hooks/useApiFetch';
 import Button_detail from './button-detail';
+import useLocalStorage from '../hooks/useLocalStorageSave';
 
 function Comic() {
+	const [favorites, setFavorites, addFavorites, clearStorage] = useLocalStorage("favoritesList", []);
+	console.log(favorites);
 	const [comicsData] = useApiFetch();
 	interface dataInterface {
 		"id": number,
@@ -46,7 +48,7 @@ function Comic() {
 						width={185}
 						height={275}
 					/>
-					<Button_detail />
+					<Button_detail element={element} addFavorites={addFavorites}/>
 					<Detail element={element} />
 				</div>
 			);
@@ -54,6 +56,7 @@ function Comic() {
 	return (
 		<div className={comicstyles.comics} style={{display: "flex", flexWrap: "wrap",}}>
 			{mappedData}
+			<button onClick={clearStorage}>Clear storage</button>
 		</div>
 	)
 }

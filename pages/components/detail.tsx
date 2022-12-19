@@ -13,7 +13,7 @@ export function Detail({ element }: any) {
 	if (element.creators.items.length > 0) {
 		creators = element.creators.items[0].name;
 	}
-	console.log(element.creators.items);
+	// console.log(element.creators.items);
 	return (
 		<div className={comicstyles.detail}>
 			<h3>{element.title}</h3>
