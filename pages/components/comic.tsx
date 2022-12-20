@@ -10,7 +10,7 @@ function Comic() {
 	const [favorites, setFavorites, addFavorites, clearStorage] = useLocalStorage("favoritesList", []);
 	console.log(favorites);
 	const [comicsData] = useApiFetch();
-	interface dataInterface {
+	type DataType = {
 		"id": number,
 		"title": string,
 		"issueNumber": number,
@@ -32,7 +32,7 @@ function Comic() {
 		"characters": any,
 		"events": any
 	};
-	var mappedData = comicsData<dataInterface>.map(element => {
+	var mappedData = comicsData.map(element => {
 			let img : string;
 			if (element.thumbnail.extension == "") {
 				img = "/" + element.thumbnail.path;

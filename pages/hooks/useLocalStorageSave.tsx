@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useLocalStorage(key, initialValue) {
+function useLocalStorage(key : string, initialValue : any) {
 	const [storedValue, setStoredValue] = useState(() => {
 		if (typeof window === "undefined") {
 			return initialValue;
@@ -13,7 +13,7 @@ function useLocalStorage(key, initialValue) {
 			return initialValue;
 		}
 	});
-	const setValue = (value) => {
+	const setValue = (value : any) => {
 		try {
 			const valueToStore = value instanceof Function ? value(storedValue) : value;
 			setStoredValue(valueToStore);
@@ -24,7 +24,7 @@ function useLocalStorage(key, initialValue) {
 			console.log(error);
 		}
 	};
-	function addValue(value) {
+	function addValue(value : any) {
 		let oGArray = [...storedValue];
 		if (oGArray.length >= 10) return;
 		oGArray.push(value);
