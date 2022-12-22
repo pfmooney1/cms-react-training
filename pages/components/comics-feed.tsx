@@ -3,7 +3,7 @@ import comicstyles from '../../styles/Comic.module.css';
 import Detail from './detail';
 import Image from 'next/image';
 import { useApiFetch } from '../hooks/useApiFetch';
-import Button_detail from './button-detail';
+import Button_detail from './button-favorite';
 import useLocalStorage from '../hooks/useLocalStorageSave';
 
 function ComicsFeed() {

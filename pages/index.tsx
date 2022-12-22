@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import Comic from './components/comics-feed';
+import ComicsFeed from './components/comics-feed';
+import FavoritesPanel from './components/favorites-panel'
 import Script from 'next/script';
 
 export default function Home() {
@@ -14,7 +15,8 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
-				<Comic />
+				<ComicsFeed />
+				<FavoritesPanel />
 			</main>
 
 			<footer className={styles.footer}>
