@@ -6,6 +6,7 @@
 }
 
 .comic {
+	grid-area: comics-feed;
 	display: grid;
 	grid-template-columns: 185px;
 	grid-template-rows: 275px 275px;
@@ -18,12 +19,14 @@
 
 .comic h3 {
 	font-weight: 700;
-	padding: 10px 0;
-	margin: 0;
+	font-size: 18px;
+	padding: 20px 0;
+	margin: 10px 0 0 0;
 }
 
 .comic ul {
-	font-size: 1em;
+	font-size: 18px;
+	font-family: Karla, serif;
 	padding: 0;
 	margin: 0;
 	list-style-type: none;
@@ -39,6 +42,7 @@
 	height: auto;
 	width: auto;
 	grid-area: image;
+	box-shadow: 0px 5px 15px #00000029;
 }
 
 .detail {
@@ -47,29 +51,34 @@
 	width: 100%;
 	max-width: 185px;
 	grid-area: detail;
+	height: fit-content;
 }
 .detail_label {
 	color: black;
-	font-weight: 700;
+	font-weight: 900;
 }
 .detail_data {
-	font-weight: 600;
+	font-weight: 500;
 }
 button.button_detail {
 	justify-self: center;
+	color: var(--off-white);
 	width: 50px;
 	height: 50px;
 	font-size: 1.2em;
 	border-radius: 50%;
-	background-color: rgb(29, 29, 208);
-	border: 3px outset aliceblue;
+	background-color: var(--off-black);
+	border: 0px outset aliceblue;
 	padding: 5px;
 	z-index: 100;
 	position: relative;
 	top: -28px;
 	grid-area: detail;
 }
-
+button.favorite {
+	background-color: var(--red);
+	border: 2px solid var(--off-white);
+}
 @media (min-width: 800px) {
 	.comic {
 		grid-template-columns: 185px;

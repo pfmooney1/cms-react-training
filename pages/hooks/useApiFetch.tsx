@@ -35,8 +35,8 @@ export function useApiFetch() {
 			"name": "Loading..."
 		},
 		"dates": [
-			{ "type": "onsaleDate", "date": "Loading..." },
-			{ "type": "focDate", "date": "Loading..." }
+			{ "type": "onsaleDate", "date": "2099-10-30T00:00:00-0500" },
+			{ "type": "focDate", "date": "2099-10-30T00:00:00-0500" }
 		],
 		"thumbnail": {
 			"path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",

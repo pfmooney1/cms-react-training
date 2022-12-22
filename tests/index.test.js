@@ -7,6 +7,5 @@ describe("Calculator", () => {
 		render(<Home />);
 		// check if all components are rendered
 		expect(true).toBeTruthy();
-
 	});
 });

@@ -6,13 +6,29 @@
 	min-height: 100vh;
 	padding: 4rem 0;
 	flex: 1;
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-rows: repeat(6, 1fr);
+	grid-template-areas: "header header header header header"
+						"comics-feed comics-feed comics-feed comics-feed favorites"
+						"comics-feed comics-feed comics-feed comics-feed favorites"
+						"comics-feed comics-feed comics-feed comics-feed favorites"
+						"comics-feed comics-feed comics-feed comics-feed favorites"
+						"comics-feed comics-feed comics-feed comics-feed favorites"
+						"footer footer footer footer footer";
 	justify-content: center;
 	align-items: center;
 	margin: 0 auto;
 }
 
+#favorites-panel {
+	grid-area: favorites;
+	height: 100%;
+	width: 100%;
+	background-color: green;
+}
+#comics-grid {
+	grid-area: comics-feed;
+}
 .footer {
 	display: flex;
 	flex: 1;

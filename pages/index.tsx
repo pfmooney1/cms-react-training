@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import Comic from './components/comic';
+import Comic from './components/comics-feed';
 import Script from 'next/script';
 
 export default function Home() {

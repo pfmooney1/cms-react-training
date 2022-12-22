@@ -13,9 +13,9 @@ export function Button_detail({ element, addFavorites } : Props) {
 		addFavorites(element);
 	}
 	return (
-		<button className={comicstyles.button_detail} onClick={() => addToFavorites(element)}>
-				<i className="fa-sharp fa-solid fa-book-open-reader"></i>
-				<Script src="https://kit.fontawesome.com/1703951958.js" crossOrigin="anonymous" />
+		<button className={`${comicstyles.button_detail}`} onClick={() => addToFavorites(element)}>
+				<i className="fas fa-bolt"></i>
+				<Script src="https://kit.fontawesome.com/1ae435c4b3.js" crossOrigin="anonymous" />
 		</button>
 	)
 };
