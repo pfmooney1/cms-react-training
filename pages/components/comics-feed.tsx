@@ -1,10 +1,7 @@
-import react, { useEffect, useState } from 'react';
 import comicstyles from '../../styles/Comic.module.css';
-import Detail from './detail';
-import Image from 'next/image';
 import { useApiFetch } from '../hooks/useApiFetch';
-import Button_detail from './button-favorite';
 import useLocalStorage from '../hooks/useLocalStorageSave';
+import Card from '../components/card'
 
 function ComicsFeed() {
 	const [favorites, setFavorites, addFavorites, clearStorage] = useLocalStorage("favoritesList", []);
@@ -33,24 +30,8 @@ function ComicsFeed() {
 		"events": any
 	};
 	var mappedData = comicsData.map(element => {
-			let img : string;
-			if (element.thumbnail.extension == "") {
-				img = "/" + element.thumbnail.path;
-			}
-			else {
-				img = element.thumbnail.path + "." + element.thumbnail.extension;
-			}
 			return (
-				<div className={comicstyles.comic} key={element.id}>
-					<Image
-						src={img}
-						alt="comic"
-						width={185}
-						height={275}
-					/>
-					<Button_detail element={element} addFavorites={addFavorites}/>
-					<Detail element={element} />
-				</div>
+				<Card element={element} addFavorites={addFavorites} key={element.id} />
 			);
 		});
 	return (

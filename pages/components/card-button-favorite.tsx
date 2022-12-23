@@ -7,7 +7,7 @@ type Props = {
 	element: object;
 }
 
-export function Button_detail({ element, addFavorites } : Props) {
+export function Button_favorite({ element, addFavorites } : Props) {
 	function addToFavorites(element : any) {
 		console.log(element);
 		addFavorites(element);
@@ -20,4 +20,4 @@ export function Button_detail({ element, addFavorites } : Props) {
 	)
 };
 
-export default Button_detail;
+export default Button_favorite;

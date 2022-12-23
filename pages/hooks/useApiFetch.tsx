@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import loadingSpinner from "../../public/loadingSpinner.gif";
 
 export function useApiFetch() {
 	// interface dataInterface {
