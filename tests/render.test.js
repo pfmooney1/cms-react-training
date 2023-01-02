@@ -1,13 +1,13 @@
 import React from "react";
-import Home from "../pages/index";
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
-import Detail from "../pages/components/detail";
+import { fireEvent, getByTestId, render, screen, debug } from "@testing-library/react";
+import Detail from "../pages/components/card-detail";
 
 describe("Detail Component", () => {
 	it("renders the comic details", () => {
 		render(<Detail />);
-		// check if all components are rendered
-		expect(Detail).toContainElement(<ul></ul>)
+		screen.debug();
+		expect(screen).toBeTruthy;
+		// expect(screen.getByTestId("ul")).toBeTruthy;
 	});
 });

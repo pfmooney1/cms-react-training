@@ -1,17 +1,16 @@
 :root {
 	--white: #00000000;
 	--off-white: #F8F8F2;
-	--green: #9ECFC5;
-	--pink: #C24868E6;
-	--red: #C24868;
-	--black: #000000;
-	--off-black: #222222;
 	--lightest-gray: #00000029;
 	--light-gray: #8B8B8B;
 	--gray: #00000075;
 	--dark-gray: #000000B3;
+	--off-black: #222222;
+	--black: #000000;
+	--green: #9ECFC5;
+	--pink: #C24868E6;
+	--red: #C24868;
 }
-
 
 html,
 body {
@@ -36,6 +35,6 @@ a {
 	}
 	body {
 		background: var(--off-white);
-		color: black;
+		color: var(--black);
 	}
 }

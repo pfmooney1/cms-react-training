@@ -1,4 +1,4 @@
-import comicstyles from '../../styles/Comic.module.css';
+import cardstyles from '../../styles/Card.module.css';
 import Detail from './card-detail';
 import Image from 'next/image';
 import Button_favorite from './card-button-favorite';
@@ -13,7 +13,7 @@ export function Card(props : any) {
 		img = props.element.thumbnail.path + "." + props.element.thumbnail.extension;
 	}
 	return (
-		<div className={comicstyles.comic}>
+		<div className={cardstyles.card}>
 			<Image
 				src={img}
 				alt="comic"

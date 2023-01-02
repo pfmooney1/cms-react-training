@@ -1,0 +1,20 @@
+.footer {
+	align-items: center;
+	background-color: var(--off-black);
+	border-top: 1px solid #eaeaea;
+	color: var(--off-white);
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	justify-content: center;
+	margin: 10px 0 0 0;
+	padding: 2rem 0;
+}
+
+.footer a {
+	align-items: center;
+	display: inline;
+	justify-content: center;
+	text-decoration: underline;
+	margin: 6px;
+}

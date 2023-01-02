@@ -1,11 +1,14 @@
 import react from 'react';
-import comicstyles from '../../styles/Comic.module.css';
+import cardstyles from '../../styles/Card.module.css';
 
 export function Detail({ element } : any) {
 	const months = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"];	
 	let dateToWrite = "N/A";
+	if (!element) {
+		return null;
+	}
 	if (element.dates) {
-		let ogDate = element.dates[0].date;
+		let ogDate = element.dates.date;
 		let rawDate = new Date(ogDate);
 		let month = rawDate.getMonth();
 		let day = rawDate.getDate();
@@ -18,24 +21,24 @@ export function Detail({ element } : any) {
 		creators = element.creators.items[0].name;
 	}
 	return (
-		<div className={comicstyles.detail}>
+		<div className={cardstyles.detail}>
 			<h3>{element.title}</h3>
-			<ul>
+			<ul data-testid="ul">
 				<li>
-					<span className={comicstyles.detail_label}>Issue:   </span>
-					<span className={comicstyles.detail_data}>{element.issueNumber}</span>
+					<span className={cardstyles.detail_label}>Issue:   </span>
+					<span className={cardstyles.detail_data}>{element.issueNumber}</span>
 				</li>
 
 				<li>
-					<span className={comicstyles.detail_label}>Published:</span>
+					<span className={cardstyles.detail_label}>Published:</span>
 					<br />
-					<span className={comicstyles.detail_data}>{dateToWrite}</span>
+					<span className={cardstyles.detail_data}>{dateToWrite}</span>
 				</li>
 
 				<li>
-					<span className={comicstyles.detail_label}>Creators:</span>
+					<span className={cardstyles.detail_label}>Creators:</span>
 					<br />
-					<span className={comicstyles.detail_data}>{creators}</span>
+					<span className={cardstyles.detail_data}>{creators}</span>
 				</li>
 			</ul>
 		</div>

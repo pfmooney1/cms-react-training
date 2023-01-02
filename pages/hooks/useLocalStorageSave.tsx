@@ -27,7 +27,16 @@ function useLocalStorage(key : string, initialValue : any) {
 	function addValue(value : any) {
 		let oGArray = [...storedValue];
 		if (oGArray.length >= 10) return;
+		if (oGArray.length >= 10) return;
 		oGArray.push(value);
+		setValue(oGArray);
+		if (typeof window !== "undefined") {
+			window.localStorage.setItem(key, JSON.stringify(oGArray));
+		}
+	};
+	function removeValue(index : number) {
+		let oGArray = [...storedValue];
+		oGArray.splice(index, 1);
 		setValue(oGArray);
 		if (typeof window !== "undefined") {
 			window.localStorage.setItem(key, JSON.stringify(oGArray));
@@ -39,6 +48,6 @@ function useLocalStorage(key : string, initialValue : any) {
 			window.localStorage.removeItem(key);
 		}
 	};
-	return [storedValue, setValue, addValue, clearStorage];
+	return [storedValue, setValue, addValue, removeValue, clearStorage];
 }
 export default useLocalStorage;

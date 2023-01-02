@@ -1,0 +1,22 @@
+.favoritesPanel {
+	align-self: start;
+	background-color: var(--off-black);
+	color: white;
+	grid-area: favorites;
+	min-height: 500px;
+	text-align: center;
+	width: 350px;
+}
+
+.favoritesPanel ul {
+	font-family: Karla, serif;
+	font-size: 18px;
+	list-style-type: none;
+	list-style-position: outside;
+	margin: 0;
+	padding: 0 0 20px 0;
+}
+
+.favoritesPanel ul li {
+	padding-bottom: 6px;
+}
