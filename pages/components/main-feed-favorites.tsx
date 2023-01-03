@@ -3,13 +3,14 @@ import FavoritesPanel from "./favorites-panel";
 import styles from "../../styles/App.module.css";
 import { useApiFetch } from '../hooks/useApiFetch';
 import useLocalStorage from '../hooks/useLocalStorageSave';
+import { useState } from "react";
 
 
 export function Card(props : any) {
 
 	const [favorites, setFavorites, addFavorites, removeFavorite, clearStorage] = useLocalStorage("favoritesList", []);
 	console.log(favorites);
-	const [comicsData] = useApiFetch();
+	let [comicsData] = useApiFetch();
 	type DataType = {
 		"id": number,
 		"title": string,

@@ -11,12 +11,46 @@
 .favoritesPanel ul {
 	font-family: Karla, serif;
 	font-size: 18px;
+	gap: 10px;
 	list-style-type: none;
 	list-style-position: outside;
 	margin: 0;
 	padding: 0 0 20px 0;
+	font-family: inherit;
 }
 
-.favoritesPanel ul li {
-	padding-bottom: 6px;
+
+
+/*! Favorites Card */
+.favoriteCard {
+	display: grid;
+	font-family: inherit;
+	font-size: medium;
+	grid-template-columns: 65px 1fr;
+	grid-template-rows: 70px minmax(1fr 50px);
+	grid-template-areas: 
+		"image title"
+		"image issue";
+	gap: 5px;
+	margin: 20px 30px;
+	text-align: left;
+}
+
+.image {
+	grid-area: image;
+}
+
+.title {
+	display: block;
+	grid-area: title;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 200px;
+	font-family: inherit;
+}
+
+.issue {
+	grid-area: issue;
+	font-family: inherit;
 }

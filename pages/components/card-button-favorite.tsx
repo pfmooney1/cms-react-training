@@ -13,7 +13,7 @@ export function Button_favorite({ element, addFavorites } : Props) {
 		addFavorites(element);
 	}
 	return (
-		<button className={`${cardstyles.button_detail}`} onClick={() => addToFavorites(element)}>
+		<button className={`${cardstyles.button_detail}`} onClick={() => addToFavorites(element)} >
 				<i className="fas fa-bolt"></i>
 				<Script src="https://kit.fontawesome.com/1ae435c4b3.js" crossOrigin="anonymous" />
 		</button>
