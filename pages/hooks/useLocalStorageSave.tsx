@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function useLocalStorage(key : string, initialValue : any) {
-	const [storedValue, setStoredValue] = useState(() => {
+	const [favoritesList, setStoredValue] = useState(() => {
 		if (typeof window === "undefined") {
 			return initialValue;
 		}
@@ -15,7 +15,7 @@ function useLocalStorage(key : string, initialValue : any) {
 	});
 	const setValue = (value : any) => {
 		try {
-			const valueToStore = value instanceof Function ? value(storedValue) : value;
+			const valueToStore = value instanceof Function ? value(favoritesList) : value;
 			setStoredValue(valueToStore);
 			if (typeof window !== "undefined") {
 				window.localStorage.setItem(key, JSON.stringify(valueToStore));
@@ -24,22 +24,21 @@ function useLocalStorage(key : string, initialValue : any) {
 			console.log(error);
 		}
 	};
-	function addValue(value : any) {
-		let oGArray = [...storedValue];
-		if (oGArray.length >= 10) return;
-		if (oGArray.length >= 10) return;
-		oGArray.push(value);
-		setValue(oGArray);
+	function addFavorite(value : any) {
+		let tempArray = [...favoritesList];
+		if (tempArray.length >= 10) return;
+		tempArray.push(value);
+		setValue(tempArray);
 		if (typeof window !== "undefined") {
-			window.localStorage.setItem(key, JSON.stringify(oGArray));
+			window.localStorage.setItem(key, JSON.stringify(tempArray));
 		}
 	};
-	function removeValue(index : number) {
-		let oGArray = [...storedValue];
-		oGArray.splice(index, 1);
-		setValue(oGArray);
+	function removeFavorite(index : number) {
+		let tempArray = [...favoritesList];
+		tempArray.splice(index, 1);
+		setValue(tempArray);
 		if (typeof window !== "undefined") {
-			window.localStorage.setItem(key, JSON.stringify(oGArray));
+			window.localStorage.setItem(key, JSON.stringify(tempArray));
 		}
 	};
 	function clearStorage() {
@@ -48,6 +47,6 @@ function useLocalStorage(key : string, initialValue : any) {
 			window.localStorage.removeItem(key);
 		}
 	};
-	return [storedValue, setValue, addValue, removeValue, clearStorage];
+	return [favoritesList, setValue, addFavorite, removeFavorite, clearStorage];
 }
 export default useLocalStorage;

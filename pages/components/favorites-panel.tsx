@@ -2,39 +2,42 @@ import React from "react";
 import FavStyles from "../../styles/FavoritesPanel.module.css";
 import Image from "next/image";
 
-function FavoritesPanel(props : any) {
-	let arrayOfFavorites = props.favorites;
-	let arrayOfIDs = arrayOfFavorites.map((item: any, index: number) => (
+function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
+	let arrayOfIDs = favoritesList.map((favItem: any, index: number) => (
 		<FavoritesLI 
-			item={item}
+			favItem={favItem}
 			index={index}
-			removeFavorite={props.removeFavorite}
-			key={item.id}
+			removeFavorite={removeFavorite}
+			key={favItem.id}
 		/>
 	))
 	return (
 		<div className={FavStyles.favoritesPanel}>
-			<h2>Favorites: {arrayOfFavorites.length}</h2>
+			<h2>Favorites: {favoritesList.length}</h2>
 			<ul>
 				{arrayOfIDs}
 			</ul>
-			<button onClick={props.clearStorage}>Clear storage</button>
+			<button onClick={clearStorage}>Clear storage</button>
 		</div>
 	);
-	function FavoritesLI({removeFavorite, item, index} : any) {
+
+
+	function FavoritesLI({ removeFavorite, favItem, index} : any) {
+		let altText = `Cover for '${favItem.title}'`
 		return (
-			<li className={FavStyles.favoriteCard}
-				onClick={() => removeFavorite(index)} 
+			<li 
+				className={FavStyles.favoriteCard}
+				onClick={() => removeFavorite(index)}
 			>
 				<Image
-					src={item.imageSrc}
-					alt="comic"
+					src={favItem.imageSrc}
+					alt={altText}
 					width={60}
 					height={80}
 					className={FavStyles.image}
 				/>
-				<span className={FavStyles.title}>{item.title}</span>
-				<span className={FavStyles.issue}>Issue: {item.issueNumber}</span>
+				<span className={FavStyles.title}>{favItem.title}</span>
+				<span className={FavStyles.issue}>Issue: {favItem.issueNumber}</span>
 			</li>
 		)
 	}

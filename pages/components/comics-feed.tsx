@@ -2,11 +2,16 @@ import ComicFeedStyles from '../../styles/ComicFeed.module.css';
 
 import Card from '../components/card'
 
-function ComicsFeed(props) {
-
-	var mappedData = props.comicsData.map(element => {
+function ComicsFeed({comicsData, addFavorite, favoritesList, removeFavorite} : any) {
+	var mappedData = comicsData.map(comic => {
 			return (
-				<Card element={element} addFavorites={props.addFavorites} key={element.id} />
+				<Card 
+					comic={comic}
+					key={comic.id}
+					addFavorite={addFavorite}
+					favoritesList={favoritesList}
+					removeFavorite={removeFavorite}
+				/>
 			);
 		});
 	return (

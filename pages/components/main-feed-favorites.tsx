@@ -8,8 +8,7 @@ import { useState } from "react";
 
 export function Card(props : any) {
 
-	const [favorites, setFavorites, addFavorites, removeFavorite, clearStorage] = useLocalStorage("favoritesList", []);
-	console.log(favorites);
+	const [favoritesList, setValue, addFavorite, removeFavorite, clearStorage] = useLocalStorage("favoritesList", []);
 	let [comicsData] = useApiFetch();
 	type DataType = {
 		"id": number,
@@ -60,12 +59,13 @@ export function Card(props : any) {
 			</div>
 			<ComicsFeed
 				comicsData={comicsData}
-				favorites={favorites}
-				addFavorites={addFavorites}
+				favoritesList={favoritesList}
+				addFavorite={addFavorite}
+				removeFavorite={removeFavorite}
 			/>
 			<FavoritesPanel
 				clearStorage={clearStorage}
-				favorites={favorites}
+				favoritesList={favoritesList}
 				removeFavorite={removeFavorite}
 			/>
 		</main>

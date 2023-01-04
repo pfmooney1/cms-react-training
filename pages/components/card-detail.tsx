@@ -1,25 +1,23 @@
 import react from 'react';
 import cardstyles from '../../styles/Card.module.css';
 
-export function Detail({ element } : any) {
+export function Detail({ comic } : any) {
+	if (!comic) return null;
 	let dateToWrite = "Loading...";
 	let creators = "Loading...";
-	if (!element) {
-		return null;
+	if (comic.date) {
+		dateToWrite = comic.date;	
 	}
-	if (element.date) {
-		dateToWrite = element.date;	
-	}
-	if (element.creators.items.length > 0) {
-		creators = element.creators.items[0].name;
+	if (comic.creators.items.length > 0) {
+		creators = comic.creators.items[0].name;
 	}
 	return (
 		<div className={cardstyles.detail} data-testid="detailComponent">
-			<h3 data-testid="title">{element.title}</h3>
+			<h3 data-testid="title">{comic.title}</h3>
 			<ul>
 				<li>
 					<span className={cardstyles.detail_label}>Issue:   </span>
-					<span className={cardstyles.detail_data} data-testid="issue">{element.issueNumber}</span>
+					<span className={cardstyles.detail_data} data-testid="issue">{comic.issueNumber}</span>
 				</li>
 
 				<li>
