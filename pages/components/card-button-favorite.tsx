@@ -10,12 +10,8 @@ type Props = {
 }
 
 export function Button_favorite({ comic, addFavorite } : Props) {
-	function addToFavorites(comic : any) {
-		console.log(comic);
-		addFavorite(comic);
-	}
 	return (
-		<button className={`${cardstyles.button_detail}`} onClick={() => addToFavorites(comic)} >
+		<button className={`${cardstyles.button_detail}`} onClick={() => addFavorite(comic)} >
 				<i className="fas fa-bolt"></i>
 				<Script src="https://kit.fontawesome.com/1ae435c4b3.js" crossOrigin="anonymous" />
 		</button>

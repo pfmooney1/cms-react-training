@@ -6,11 +6,31 @@ import Button_unfavorite from './card-button-unfavorite';
 
 export function Card({ comic, favoritesList, addFavorite, removeFavorite } : any) {
 	let altText = `Cover for '${comic.title}'`
-	let thisComicID = comic.id;
-	let obj = favoritesList.find(item => item.id === thisComicID);
-	// if (comic == obj) {
-	// 	console.log("the same");
-	// }
+	let arrayOfFavoriteIDs : any = [];
+	favoritesList.forEach(fav => {
+		if (fav.id !== undefined) {
+			arrayOfFavoriteIDs.push(fav.id);
+		};
+	}
+	);
+	function returnButton() {
+		if (arrayOfFavoriteIDs.includes(comic.id)) {
+			return <Button_unfavorite
+				comic={comic}
+				addFavorite={addFavorite}
+				favoritesList={favoritesList}
+				removeFavorite={removeFavorite}
+			/>
+		}
+		else {
+			return <Button_favorite
+				comic={comic}
+				addFavorite={addFavorite}
+				favoritesList={favoritesList}
+				removeFavorite={removeFavorite}
+			/>
+		}
+	}
 	return (
 		<div className={cardstyles.card}>
 			<Image
@@ -19,19 +39,7 @@ export function Card({ comic, favoritesList, addFavorite, removeFavorite } : any
 				width={185}
 				height={275}
 			/>
-			{comic == obj ? <Button_favorite
-				comic={comic}
-				addFavorite={addFavorite}
-				favoritesList={favoritesList}
-				removeFavorite={removeFavorite}
-			/> :
-			<Button_unfavorite
-				comic={comic}
-				addFavorite={addFavorite}
-				favoritesList={favoritesList}
-				removeFavorite={removeFavorite}
-			/>
-			}
+			{returnButton()}
 			<Detail comic={comic} />
 		</div>
 	)

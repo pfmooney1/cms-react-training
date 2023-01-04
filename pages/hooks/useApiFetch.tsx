@@ -59,7 +59,7 @@ export function useApiFetch() {
 				console.log("Successfully loaded! ");
 				tidyData(comics)
 				console.log("API data has been tidied.")
-				console.log(comics)
+				// console.log(comics)
 				getComicsData(comics);
 			} catch (error) {
 				console.log("Error: ", error);
