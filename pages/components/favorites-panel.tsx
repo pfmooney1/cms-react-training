@@ -4,7 +4,14 @@ import Image from "next/image";
 
 function FavoritesPanel(props : any) {
 	let arrayOfFavorites = props.favorites;
-	let arrayOfIDs = arrayOfFavorites.map((item: any, index: number) => <FavoritesLI item={item} index={index} removeFavorite={props.removeFavorite} />)
+	let arrayOfIDs = arrayOfFavorites.map((item: any, index: number) => (
+		<FavoritesLI 
+			item={item}
+			index={index}
+			removeFavorite={props.removeFavorite}
+			key={item.id}
+		/>
+	))
 	return (
 		<div className={FavStyles.favoritesPanel}>
 			<h2>Favorites: {arrayOfFavorites.length}</h2>
@@ -15,20 +22,12 @@ function FavoritesPanel(props : any) {
 		</div>
 	);
 	function FavoritesLI({removeFavorite, item, index} : any) {
-		let img: string;
-		if (item.thumbnail.extension == "") {
-			img = "/" + item.thumbnail.path;
-		}
-		else {
-			img = item.thumbnail.path + "." + item.thumbnail.extension;
-		}
 		return (
 			<li className={FavStyles.favoriteCard}
 				onClick={() => removeFavorite(index)} 
-				key={item.id}
 			>
 				<Image
-					src={img}
+					src={item.imageSrc}
 					alt="comic"
 					width={60}
 					height={80}

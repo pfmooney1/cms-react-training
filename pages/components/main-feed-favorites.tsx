@@ -39,32 +39,31 @@ export function Card(props : any) {
 			<div className={styles.filters}>
 				Filter by:
 				<select>
-					<option>Character</option>
-					<option>Iron Man: 1009368</option>
-					<option>Captain America: 1009220</option>
-					<option>Thor: 1009664</option>
-					<option>Deadpool: 1009268</option>
-					<option>Scarlet Witch: 1009562</option>
-					<option>Black Widow: 1009189</option>
-					<option>Wasp: 1009707</option>
-					<option>Gamora: 1010763</option>
+					<option value="">Character</option>
+					<option value="1009368">Iron Man</option>
+					<option value="1009220">Captain America</option>
+					<option value="1009664">Thor</option>
+					<option value="1009268">Deadpool</option>
+					<option value="1009562">Scarlet Witch</option>
+					<option value="1009189">Black Widow</option>
+					<option value="1009707">Wasp</option>
+					<option value="1010763">Gamora</option>
 				</select>
 				<select>
-					<option>Creator</option>
-					<option>Kate Leth: 12787</option>
-					<option>Brian Michael Bendis: 24</option>
-					<option>Stan Lee: 30</option>
-					<option>Steve Ditko: 32</option>
-					<option>Jack Kirby: 196</option>
+					<option value="">Creator</option>
+					<option value="12787">Kate Leth</option>
+					<option value="24">Brian Michael Bendis</option>
+					<option value="30">Stan Lee</option>
+					<option value="32">Steve Ditko</option>
+					<option value="196">Jack Kirby</option>
 				</select>
 			</div>
 			<ComicsFeed
 				comicsData={comicsData}
 				favorites={favorites}
 				addFavorites={addFavorites}
-				/>
+			/>
 			<FavoritesPanel
-				comicsData={comicsData}
 				clearStorage={clearStorage}
 				favorites={favorites}
 				removeFavorite={removeFavorite}

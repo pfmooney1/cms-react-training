@@ -5,17 +5,10 @@ import Button_favorite from './card-button-favorite';
 import Button_unfavorite from './card-button-unfavorite';
 
 export function Card(props : any) {
-	let img: string;
-	if (props.element.thumbnail.extension == "") {
-		img = "/" + props.element.thumbnail.path;
-	}
-	else {
-		img = props.element.thumbnail.path + "." + props.element.thumbnail.extension;
-	}
 	return (
 		<div className={cardstyles.card}>
 			<Image
-				src={img}
+				src={props.element.imageSrc}
 				alt="comic"
 				width={185}
 				height={275}
