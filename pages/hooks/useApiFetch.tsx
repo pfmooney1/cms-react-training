@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useApiFetch() {
+export function useApiFetch(character: any, creator: any, page: any) {
 	// interface dataInterface {
 	// 	"id": number,
 	// 	"title": string,
@@ -46,10 +46,55 @@ export function useApiFetch() {
 		"events": { "available": 0, "collectionURI": "http://gateway.marvel.com/v1/public/comics/82967/events", "items": [], "returned": 0 }
 	}];
 	tidyData(sampleData);
-	const [comicsData, getComicsData] = useState(sampleData);
 
-	useEffect(() => {
-		const url: string = "http://gateway.marvel.com/v1/public/comics?ts=1&apikey=deeef1f1563086552c1c70bec9bad13c&hash=3907e3cae8ca9355f8ef1bced483e9ad";
+
+	const [comicsData, getComicsData] = useState(sampleData);
+	function fetchAndHandleData() {
+		let filterType = "creator";
+		let filterValue = 30;
+		let page = 1;
+		/*
+		*Character filter options:
+		Iron Man: 1009368
+		Captain America: 1009220
+		Thor: 1009664
+		Deadpool: 1009268
+		Scarlet Witch: 1009562
+		Black Widow: 1009189
+		Wasp: 1009707
+		Gamora: 1010763
+		Silk: 1017815
+
+		* Creator filter options:
+		Kate Leth: 12787
+		Brian Michael Bendis: 24
+		Stan Lee: 30
+		Steve Ditko: 32
+		Jack Kirby: 196
+		Test: 14278
+		Test: 13200
+		*/
+
+		function formatTheURL(filterType, filterValue, page) {
+			let offsetAmount = (page - 1) * 20;
+			let modifier = "";
+			if (filterType == "character") {
+				modifier = `characters/${filterValue}/`;
+			}
+			if (filterType == "creator") {
+				modifier = `creators/${filterValue}/`;
+			}
+			let offset = ""
+			if (page >= 2) {
+				offset = `offset=${offsetAmount}&`;
+			}
+			const address = `http://gateway.marvel.com/v1/public/`;
+			const apiKey = "&ts=1&apikey=deeef1f1563086552c1c70bec9bad13c&hash=3907e3cae8ca9355f8ef1bced483e9ad";
+			const getComics = "comics?";
+			return address + modifier + getComics + offset + apiKey;
+		}
+		let url = formatTheURL(filterType, filterValue, page);
+
 		console.log("Loading...");
 		const fetchData = async () => {
 			try {
@@ -66,7 +111,14 @@ export function useApiFetch() {
 			}
 		};
 		fetchData();
+		console.log("fetchAndHandleData function ran")
+	}
+	useEffect(() => {
+		fetchAndHandleData();
 	}, []);
+
+
+
 	function tidyData(dataToTidy : any) {
 		let tidiedData = dataToTidy;
 		tidiedData.forEach(comic => {
@@ -110,6 +162,7 @@ export function useApiFetch() {
 		let year = rawDate.getFullYear();
 		return `${months[month]} ${day}, ${year}`;
 	}
+	// return [comicsData, fetchAndHandleData];
 	return [comicsData];
 }
 export default { useApiFetch };

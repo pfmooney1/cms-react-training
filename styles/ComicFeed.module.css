@@ -3,3 +3,10 @@
 	justify-content: center;
 	gap: 40px;
 }
+
+.errorMessage {
+	text-align: center;
+}
+.errorMessage i {
+	font-size: 6em;
+}
