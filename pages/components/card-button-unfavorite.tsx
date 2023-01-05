@@ -8,7 +8,6 @@ type Props = {
 	addFavorite: Function;
 	removeFavorite: Function
 }
-//   onClick={() => removeFavorite(index)}
 
 export function Button_unfavorite({ comic, favoritesList, removeFavorite } : Props) {
 	let arrayOfFavoriteIDs: any = [];

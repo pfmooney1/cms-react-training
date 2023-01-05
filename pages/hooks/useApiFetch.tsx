@@ -59,7 +59,7 @@ export function useApiFetch() {
 				console.log("Successfully loaded! ");
 				tidyData(comics)
 				console.log("API data has been tidied.")
-				// console.log(comics)
+				console.log(comics)
 				getComicsData(comics);
 			} catch (error) {
 				console.log("Error: ", error);
@@ -92,9 +92,15 @@ export function useApiFetch() {
 			delete comic.images;
 			comic.imageSrc = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
 			comic.date = formatDate(`${comic.dates[0].date}`);
+			comic.issueNumber = comic.issueNumber.toString();
+			comic.creatorName = formatCreatorName(comic.creators.items[0]);
 			delete comic.thumbnail;
 			delete comic.dates;
 		})
+	}
+	function formatCreatorName(creator : any) {
+		if (!creator) return "N/A";
+		if (creator) return `${creator.name}`;
 	}
 	function formatDate(dateToFormat : string) {
 		const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];	

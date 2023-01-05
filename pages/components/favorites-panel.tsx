@@ -3,7 +3,7 @@ import FavStyles from "../../styles/FavoritesPanel.module.css";
 import Image from "next/image";
 
 function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
-	let arrayOfIDs = favoritesList.map((favItem: any, index: number) => (
+	let favoritesMapped = favoritesList.map((favItem: any, index: number) => (
 		<FavoritesLI 
 			favItem={favItem}
 			index={index}
@@ -15,7 +15,7 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
 		<div className={FavStyles.favoritesPanel}>
 			<h2>Favorites: {favoritesList.length}</h2>
 			<ul>
-				{arrayOfIDs}
+				{favoritesMapped}
 			</ul>
 			<button onClick={clearStorage}>Clear storage</button>
 		</div>

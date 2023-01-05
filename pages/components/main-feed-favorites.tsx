@@ -7,7 +7,6 @@ import { useState } from "react";
 
 
 export function Card(props : any) {
-
 	const [favoritesList, setValue, addFavorite, removeFavorite, clearStorage] = useLocalStorage("favoritesList", []);
 	let [comicsData] = useApiFetch();
 	type DataType = {
