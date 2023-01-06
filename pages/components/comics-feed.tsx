@@ -3,7 +3,11 @@ import ComicFeedStyles from '../../styles/ComicFeed.module.css';
 import Card from './card'
 import PageSelector from './page-selector';
 
-function ComicsFeed({comicsData, addFavorite, favoritesList, removeFavorite, userPreferences, updateUserPreferences} : any) {
+function ComicsFeed({comicsData, addFavorite, favoritesList, removeFavorite, userPreferences, updateUserPreferences, comic} : any) {
+	let totalFromThisSet;
+	if (comicsData) {
+		totalFromThisSet = comicsData[0].totalFromThisSet;
+	}
 	const errorMessage = (
 		<div className={ComicFeedStyles.errorMessage}>
 			<i className="fas fa-search"></i>
@@ -28,7 +32,7 @@ function ComicsFeed({comicsData, addFavorite, favoritesList, removeFavorite, use
 			<div id="comics-feed" className={ComicFeedStyles.comicsFeed} style={{display: "flex", flexWrap: "wrap",}}>
 				{mappedData}
 			</div>
-			<PageSelector userPreferences={userPreferences} updateUserPreferences={updateUserPreferences} />
+			<PageSelector userPreferences={userPreferences} updateUserPreferences={updateUserPreferences} totalFromThisSet={totalFromThisSet} />
 		</>
 	)
 }

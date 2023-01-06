@@ -13,7 +13,7 @@ export default function Home() {
 				<link rel="icon" href="/bat-mask.png" sizes="any" />
 				<link rel="icon" href="/bat-mask.svg" type="image/svg+xml" />
 			</Head>
-			{/* <header className={styles.header}>
+			<header className={styles.header}>
 				<Image
 					src="/logo.svg"
 					alt="Comic Closet logo"
@@ -29,7 +29,7 @@ export default function Home() {
 					height={352}
 				/>
 				<h1 className={styles.pageTitle}>Comic Closet</h1>
-			</header> */}
+			</header>
 			<Main />
 			<Footer />
 		</div>

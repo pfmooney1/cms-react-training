@@ -1,6 +1,12 @@
 import ComicFeedStyles from '../../styles/ComicFeed.module.css';
 
-function PageSelector({userPreferences, updateUserPreferences} : any) {
+function PageSelector({ userPreferences, updateUserPreferences, totalFromThisSet } : any) {
+	let firstComicOnPage = ((userPreferences.page - 1) * 20) + 1;
+	let lastComicOnPage = firstComicOnPage + 19;
+	if (lastComicOnPage > totalFromThisSet){
+		lastComicOnPage = totalFromThisSet;
+	}
+
 	function prevPage() {
 		if (userPreferences.page <= 1) return;
 		updateUserPreferences(prevState => ({
@@ -8,21 +14,16 @@ function PageSelector({userPreferences, updateUserPreferences} : any) {
 			page: prevState.page - 1
 		}))
 	}
+
 	function nextPage() {
-		// if (userPreferences.page <= 1) return;
+		if (lastComicOnPage == totalFromThisSet) return;
 		updateUserPreferences(prevState => ({
 			...prevState,
 			page: prevState.page + 1
 		}))
 	}
 
-	function formatPages() {
-		let a = ((userPreferences.page - 1) * 20) + 1;
-		let b = a + 19;
-		let c = "###"
-		return `${a}-${b} of ${c}`
-	};
-	let pagesFormatted = formatPages();
+	let pagesFormatted = `${firstComicOnPage}-${lastComicOnPage} of ${totalFromThisSet}`
 	return (
 		<div className={ComicFeedStyles.pageSelector}>
 			<button onClick={prevPage}><i className="fas fa-angle-left"></i></button>

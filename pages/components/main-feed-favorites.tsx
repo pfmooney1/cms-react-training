@@ -73,7 +73,7 @@ export function Main(props : any) {
 					<option value="1009189">Black Widow</option>
 					<option value="1009707">Wasp</option>
 					<option value="1010763">Gamora</option>
-					<option value="1017815">Test</option>
+					<option value="1017815">Silk</option>
 				</select>
 				<select id="creatorSelector" onChange={creatorSelect}>
 					<option value="">Creator</option>
@@ -83,8 +83,6 @@ export function Main(props : any) {
 					<option value="32">Steve Ditko</option>
 					<option value="196">Jack Kirby</option>
 					<option value="14278">Test</option>
-					<option value="13200">Test</option>
-
 				</select>
 			</form>
 			<ComicsFeed

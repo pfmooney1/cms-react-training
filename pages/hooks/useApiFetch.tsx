@@ -23,6 +23,7 @@ export function useApiFetch(userPreferences: any) {
 	// 	"characters": any,
 	// 	"events": any
 	// };
+	// const [totalResults, getTotalResults] = useState(100);
 	let sampleData = [{
 		"id": 0,
 		"title": "Loading...",
@@ -52,28 +53,6 @@ export function useApiFetch(userPreferences: any) {
 	function fetchAndHandleData() {
 		let {filterType, filterValue, page} = userPreferences;
 
-		/*
-		*Character filter options:
-		Iron Man: 1009368
-		Captain America: 1009220
-		Thor: 1009664
-		Deadpool: 1009268
-		Scarlet Witch: 1009562
-		Black Widow: 1009189
-		Wasp: 1009707
-		Gamora: 1010763
-		Silk: 1017815
-
-		* Creator filter options:
-		Kate Leth: 12787
-		Brian Michael Bendis: 24
-		Stan Lee: 30
-		Steve Ditko: 32
-		Jack Kirby: 196
-		Test: 14278
-		Test: 13200
-		*/
-
 		function formatTheURL(filterType, filterValue, page) {
 			let offsetAmount = (page - 1) * 20;
 			let modifier = "";
@@ -82,9 +61,9 @@ export function useApiFetch(userPreferences: any) {
 			}
 			if (filterType == "creator") {
 				modifier = `creators/${filterValue}/`;
-				if (!filterType || filterType == "" || filterValue == "") {
-					modifier ="";
-				}
+			}
+			if (!filterType || filterType == "" || filterValue == "") {
+				modifier ="";
 			}
 			let offset = ""
 			if (page >= 2) {
@@ -102,11 +81,12 @@ export function useApiFetch(userPreferences: any) {
 				const response = await fetch(url);
 				const json = await response.json();
 				const comics = json.data.results;
-				console.log(json.data)
+				console.log(json.data);
+				let totalResults = json.data.total;
 				console.log("Successfully loaded! ");
-				tidyData(comics)
+				tidyData(comics, totalResults);
 				console.log("API data has been tidied.")
-				console.log(comics)
+				console.log(comics);
 				getComicsData(comics);
 			} catch (error) {
 				console.log("Error: ", error);
@@ -120,7 +100,7 @@ export function useApiFetch(userPreferences: any) {
 
 
 
-	function tidyData(dataToTidy : any) {
+	function tidyData(dataToTidy: any, totalResults: number) {
 		let tidiedData = dataToTidy;
 		tidiedData.forEach(comic => {
 			delete comic.diamondCode;
@@ -143,10 +123,13 @@ export function useApiFetch(userPreferences: any) {
 			delete comic.format;
 			delete comic.resourceURI;
 			delete comic.images;
+			delete comic.series;
+			delete comic.stories;
 			comic.imageSrc = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
 			comic.date = formatDate(`${comic.dates[0].date}`);
 			comic.issueNumber = comic.issueNumber.toString();
 			comic.creatorName = formatCreatorName(comic.creators.items[0]);
+			comic.totalFromThisSet = totalResults || 100;
 			delete comic.thumbnail;
 			delete comic.dates;
 		})

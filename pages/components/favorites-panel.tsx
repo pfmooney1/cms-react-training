@@ -17,7 +17,7 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
 			<ul>
 				{favoritesMapped}
 			</ul>
-			<button onClick={clearStorage}>Clear storage</button>
+			<button onClick={clearStorage}>DEBUG: Clear storage</button>
 		</div>
 	);
 
