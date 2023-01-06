@@ -8,10 +8,12 @@ import { useEffect, useState } from "react";
 
 export function Main(props : any) {
 	const [favoritesList, setValue, addFavorite, removeFavorite, clearStorage] = useLocalStorage("favoritesList", []);
-	let character = undefined;
-	let creator = undefined;
-	let page = undefined;
-	let [comicsData, fetchAndHandleData] = useApiFetch(character, creator, page); // character, creator, page
+	let [userPreferences, updateUserPreferences] = useState({
+		filterType: "",
+		filterValue: 30,
+		page: 1
+	});
+	let [comicsData, fetchAndHandleData] = useApiFetch(userPreferences); // character, creator, page
 	type DataType = {
 		"id": number,
 		"title": string,
@@ -37,28 +39,29 @@ export function Main(props : any) {
 
 	// const []
 	useEffect(() => {
-		// fetchAndHandleData();
-		console.log("Use Effect fetch ran")
-	}, [character]);
-
+		fetchAndHandleData();
+	}, [userPreferences]);
 
 	function characterSelect(value : any) {
-		console.log("Character: " + value.target.value);
-		character = value.target.value;
+		document.getElementById('creatorSelector').value = "";
+		updateUserPreferences({
+			filterType: "character",
+			filterValue: value.target.value,
+			page: 1
+		})
 	}
 	function creatorSelect(value: any) {
-		console.log("Creator: " + value.target.value);
-		creator = value.target.value;
-	}
-	function pageSelect(value: any) {
-		console.log("Page: " + value.target.value);
-		page = value.target.value;
-
+		document.getElementById('characterSelector').value = "";
+		updateUserPreferences({
+			filterType: "creator",
+			filterValue: value.target.value,
+			page: 1
+		})
 	}
 
 	return (
 		<main className={styles.main}>
-			<div className={styles.filters}>
+			<form className={styles.filters}>
 				Filter by:
 				<select id="characterSelector" onChange={characterSelect}>
 					<option value="">Character</option>
@@ -70,6 +73,7 @@ export function Main(props : any) {
 					<option value="1009189">Black Widow</option>
 					<option value="1009707">Wasp</option>
 					<option value="1010763">Gamora</option>
+					<option value="1017815">Test</option>
 				</select>
 				<select id="creatorSelector" onChange={creatorSelect}>
 					<option value="">Creator</option>
@@ -78,13 +82,18 @@ export function Main(props : any) {
 					<option value="30">Stan Lee</option>
 					<option value="32">Steve Ditko</option>
 					<option value="196">Jack Kirby</option>
+					<option value="14278">Test</option>
+					<option value="13200">Test</option>
+
 				</select>
-			</div>
+			</form>
 			<ComicsFeed
 				comicsData={comicsData}
 				favoritesList={favoritesList}
 				addFavorite={addFavorite}
 				removeFavorite={removeFavorite}
+				userPreferences={userPreferences}
+				updateUserPreferences={updateUserPreferences}
 			/>
 			<FavoritesPanel
 				clearStorage={clearStorage}

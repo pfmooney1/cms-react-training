@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useApiFetch(character: any, creator: any, page: any) {
+export function useApiFetch(userPreferences: any) {
 	// interface dataInterface {
 	// 	"id": number,
 	// 	"title": string,
@@ -50,9 +50,8 @@ export function useApiFetch(character: any, creator: any, page: any) {
 
 	const [comicsData, getComicsData] = useState(sampleData);
 	function fetchAndHandleData() {
-		let filterType = "creator";
-		let filterValue = 30;
-		let page = 1;
+		let {filterType, filterValue, page} = userPreferences;
+
 		/*
 		*Character filter options:
 		Iron Man: 1009368
@@ -83,6 +82,9 @@ export function useApiFetch(character: any, creator: any, page: any) {
 			}
 			if (filterType == "creator") {
 				modifier = `creators/${filterValue}/`;
+				if (!filterType || filterType == "" || filterValue == "") {
+					modifier ="";
+				}
 			}
 			let offset = ""
 			if (page >= 2) {
@@ -95,12 +97,12 @@ export function useApiFetch(character: any, creator: any, page: any) {
 		}
 		let url = formatTheURL(filterType, filterValue, page);
 
-		console.log("Loading...");
 		const fetchData = async () => {
 			try {
 				const response = await fetch(url);
 				const json = await response.json();
 				const comics = json.data.results;
+				console.log(json.data)
 				console.log("Successfully loaded! ");
 				tidyData(comics)
 				console.log("API data has been tidied.")
@@ -111,7 +113,6 @@ export function useApiFetch(character: any, creator: any, page: any) {
 			}
 		};
 		fetchData();
-		console.log("fetchAndHandleData function ran")
 	}
 	useEffect(() => {
 		fetchAndHandleData();
@@ -162,7 +163,7 @@ export function useApiFetch(character: any, creator: any, page: any) {
 		let year = rawDate.getFullYear();
 		return `${months[month]} ${day}, ${year}`;
 	}
-	// return [comicsData, fetchAndHandleData];
-	return [comicsData];
+	return [comicsData, fetchAndHandleData];
+	// return [comicsData];
 }
 export default { useApiFetch };
