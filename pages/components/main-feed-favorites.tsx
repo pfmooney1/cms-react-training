@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
+import { useApiFetch } from '../hooks/useApiFetch';
+import useLocalStorage from '../hooks/useLocalStorageSave';
 import ComicsFeed from "./comics-feed";
 import FavoritesPanel from "./favorites-panel";
 import styles from "../../styles/App.module.css";
-import { useApiFetch } from '../hooks/useApiFetch';
-import useLocalStorage from '../hooks/useLocalStorageSave';
-import { useEffect, useState } from "react";
 
 
 export function Main(props : any) {
@@ -13,31 +13,8 @@ export function Main(props : any) {
 		filterValue: 30,
 		page: 1
 	});
-	let [comicsData, fetchAndHandleData] = useApiFetch(userPreferences); // character, creator, page
-	type DataType = {
-		"id": number,
-		"title": string,
-		"issueNumber": number,
-		"description": string,
-		"pageCount": number,
-		"series": {
-			"resourceURI": string,
-			"name": string
-		},
-		"dates": [
-			{ "type": string, "date": any },
-			{ "type": string, "date": any }
-		],
-		"thumbnail": {
-			"path": string,
-			"extension": string
-		},
-		"creators": any,
-		"characters": any,
-		"events": any
-	};
+	let [comicsData, fetchAndHandleData] = useApiFetch(userPreferences);
 
-	// const []
 	useEffect(() => {
 		fetchAndHandleData();
 	}, [userPreferences]);

@@ -1,16 +1,14 @@
-import react from 'react';
-import cardstyles from '../../styles/Card.module.css';
 import Script from 'next/script';
+import cardstyles from '../../styles/Card.module.css';
 
 type Props = {
 	comic: object;
 	favoritesList: Array<{}>;
-	addFavorite: Function;
 	removeFavorite: Function
 }
 
 export function Button_unfavorite({ comic, favoritesList, removeFavorite } : Props) {
-	let arrayOfFavoriteIDs: any = [];
+	let arrayOfFavoriteIDs: Array<number> = [];
 	favoritesList.forEach(fav => {
 		if (fav.id !== undefined) {
 			arrayOfFavoriteIDs.push(fav.id);

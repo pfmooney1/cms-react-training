@@ -1,8 +1,9 @@
-import cardstyles from '../../styles/Card.module.css';
 import Detail from './card-detail';
 import Image from 'next/image';
 import Button_favorite from './card-button-favorite';
 import Button_unfavorite from './card-button-unfavorite';
+import cardstyles from '../../styles/Card.module.css';
+
 
 export function Card({ comic, favoritesList, addFavorite, removeFavorite } : any) {
 	let altText = `Cover for '${comic.title}'`
@@ -11,13 +12,12 @@ export function Card({ comic, favoritesList, addFavorite, removeFavorite } : any
 		if (fav.id !== undefined) {
 			arrayOfFavoriteIDs.push(fav.id);
 		};
-	}
-	);
+	});
+	
 	function returnButton() {
 		if (arrayOfFavoriteIDs.includes(comic.id)) {
 			return <Button_unfavorite
 				comic={comic}
-				addFavorite={addFavorite}
 				favoritesList={favoritesList}
 				removeFavorite={removeFavorite}
 			/>
@@ -26,8 +26,6 @@ export function Card({ comic, favoritesList, addFavorite, removeFavorite } : any
 			return <Button_favorite
 				comic={comic}
 				addFavorite={addFavorite}
-				favoritesList={favoritesList}
-				removeFavorite={removeFavorite}
 			/>
 		}
 	}

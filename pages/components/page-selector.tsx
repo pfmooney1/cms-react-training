@@ -3,7 +3,7 @@ import ComicFeedStyles from '../../styles/ComicFeed.module.css';
 function PageSelector({ userPreferences, updateUserPreferences, totalFromThisSet } : any) {
 	let firstComicOnPage = ((userPreferences.page - 1) * 20) + 1;
 	let lastComicOnPage = firstComicOnPage + 19;
-	if (lastComicOnPage > totalFromThisSet){
+	if (lastComicOnPage > totalFromThisSet) {
 		lastComicOnPage = totalFromThisSet;
 	}
 
@@ -16,7 +16,7 @@ function PageSelector({ userPreferences, updateUserPreferences, totalFromThisSet
 	}
 
 	function nextPage() {
-		if (lastComicOnPage == totalFromThisSet) return;
+		if (lastComicOnPage === totalFromThisSet) return;
 		updateUserPreferences(prevState => ({
 			...prevState,
 			page: prevState.page + 1

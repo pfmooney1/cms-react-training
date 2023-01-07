@@ -11,6 +11,7 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
 			key={favItem.id}
 		/>
 	))
+
 	return (
 		<div className={FavStyles.favoritesPanel}>
 			<h2>Favorites: {favoritesList.length}</h2>
@@ -22,8 +23,10 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
 	);
 
 
+	
 	function FavoritesLI({ removeFavorite, favItem, index} : any) {
 		let altText = `Cover for '${favItem.title}'`
+
 		return (
 			<li 
 				className={FavStyles.favoriteCard}

@@ -1,4 +1,3 @@
-import react from 'react';
 import cardstyles from '../../styles/Card.module.css';
 
 export function Detail({ comic } : any) {
@@ -8,7 +7,7 @@ export function Detail({ comic } : any) {
 			<h3 data-testid="title">{comic.title || "N/A"}</h3>
 			<ul>
 				<li>
-					<span className={cardstyles.detail_label}>Issue:   </span>
+					<span className={cardstyles.detail_label}>Issue:	</span>
 					<span className={cardstyles.detail_data} data-testid="issue">{comic.issueNumber || "N/A"}</span>
 				</li>
 

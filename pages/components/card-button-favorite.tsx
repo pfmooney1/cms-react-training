@@ -1,12 +1,9 @@
-import react from 'react';
 import cardstyles from '../../styles/Card.module.css';
 import Script from 'next/script';
 
 type Props = {
 	comic: object;
-	favoritesList: Array<{}>;
 	addFavorite: Function;
-	removeFavorite: Function
 }
 
 export function Button_favorite({ comic, addFavorite } : Props) {
