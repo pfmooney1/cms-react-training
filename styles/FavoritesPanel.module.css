@@ -76,8 +76,9 @@
 }
 
 
-/**   Phone   **/
-@media only screen and (max-width: 500px) {}
-
 /**   Tablet   **/
 @media only screen and (max-width: 800px) and (min-width: 500px) {}
+
+
+/**   Phone   **/
+@media only screen and (max-width: 500px) {}

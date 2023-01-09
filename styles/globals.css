@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
+
 :root {
 	--white: #00000000;
 	--off-white: #F8F8F2;
@@ -10,7 +12,9 @@
 	--green: #9ECFC5;
 	--pink: #C24868E6;
 	--red: #C24868;
+	--Karla: Karla, serif;
 }
+
 
 html,
 body {

@@ -24,7 +24,7 @@ export function Main({comicsData, favoritesList, addFavorite, removeFavorite, us
 	return (
 		<main className={styles.main}>
 			<form className={styles.filters}>
-				Filter by:
+				<i className="fas fa-filter"></i> Filter by:
 				<select id="characterSelector" onChange={characterSelect}>
 					<option value="">Character</option>
 					<option value="1009368">Iron Man</option>

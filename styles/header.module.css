@@ -41,6 +41,51 @@
 }
 
 
+/**=====  Header  =====*/
+header.header {
+	align-items: center;
+	background: transparent url('../public/hero-photo.png') 0% 0% no-repeat padding-box;
+	background-size: cover;
+	display: grid;
+	height: 600px;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	width: 100%;
+}
+
+h1.pageTitle {
+	align-items: center;
+	background: #C24868E6 0% 0% no-repeat padding-box;
+	color: var(--off-white);
+	display: flex;
+	font: normal normal 900 61px/74px Montserrat;
+	font-size: 5em;
+	height: 175px;
+	justify-content: center;
+	margin: 0 auto;
+	text-align: center;
+	text-shadow: 3px 3px 0px #000000;
+	width: 580px;
+}
+
+.CCLogo {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.halftone{
+	width: 100%;
+	height: auto;
+	position: absolute;
+	bottom: -15px;
+	left: 0;
+	z-index: 100;
+}
+
+
 
 /**=====  Nav Bar  ===== */
 .navBar {
@@ -82,6 +127,23 @@
 /**   Phone   **/
 @media only screen and (max-width: 500px) {
 	/**=====  Header  =====*/
+	header.header {
+		background: transparent url('../public/hero-photo.png') 0% 0% no-repeat padding-box;
+		height: 500px;
+	}
+
+	h1.pageTitle {
+		font-size: 35px;
+		padding: 8px 30px;
+		width: fit-content;
+		height: fit-content;
+	}
+
+	.CCLogo {
+		height: 90px;
+		width: 90px;
+	}
+
 	.main {
 		grid-template-rows: 1fr 1fr fit-content 1fr;
 		grid-template-columns: 1fr;

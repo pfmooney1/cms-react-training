@@ -8,7 +8,8 @@
 	flex: 1;
 	justify-content: center;
 	margin: 10px 0 0 0;
-	padding: 2rem 0;
+	padding: 2rem 15px;
+	text-align: center;
 }
 
 .footer a {
@@ -19,8 +20,13 @@
 	margin: 6px;
 }
 
-/**   Phone   **/
-@media only screen and (max-width: 500px) {}
 
 /**   Tablet   **/
 @media only screen and (max-width: 800px) and (min-width: 500px) {}
+
+/**   Phone   **/
+@media only screen and (max-width: 500px) {
+	.footer {
+		padding: 2rem 5px;
+	}
+}

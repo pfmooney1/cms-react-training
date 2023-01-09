@@ -5,7 +5,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Footer from '../pages/components/footer';
 import Main from '../pages/components/main-feed-favorites'
-import styles from '../styles/App.module.css';
+import appStyles from '../styles/App.module.css';
+import welcomeStyles from '../styles/welcomePanel.module.css';
+import headerStyles from '../styles/header.module.css';
 
 export default function Home() {
 	const [favoritesList, setValue, addFavorite, removeFavorite, clearStorage] = useLocalStorage("favoritesList", []);
@@ -22,40 +24,44 @@ export default function Home() {
 
 
 	return (
-		<div className={styles.appContainer}>
+		<div className={appStyles.appContainer}>
 			<Head>
 				<title>Mooney's Comic App</title>
 				<meta name="description" content="Browse Marvel's collections of comics." />
 				<link rel="icon" href="/bat-mask.png" sizes="any" />
 				<link rel="icon" href="/bat-mask.svg" type="image/svg+xml" />
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
+				<link href="https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap" rel="stylesheet"></link>
 			</Head>
-			<header className={styles.header}>
+			<header className={headerStyles.header}>
 				<Image
 					src="/logo.svg"
 					alt="Comic Closet logo"
-					className={styles.CCLogo}
+					className={headerStyles.CCLogo}
 					width={120}
 					height={120}
 				/>
-				<div className={styles.navBar}>
+				<div className={headerStyles.navBar}>
 					<a href="#">Home</a>
 					<a href="#">Shop</a>
 					<a href="#">
 						<i className="fas fa-bolt"></i>
 						My Favorites
-						<span className={styles.favoritesCount}>   ({favoritesList.length})</span>
+						<span className={headerStyles.favoritesCount}>   ({favoritesList.length})</span>
 					</a>
+					<button><i className="fas fa-bars"></i></button>
 				</div>
 				<Image
 					src="/halftone.png"
 					alt="Image fade"
-					className={styles.halftone}
+					className={headerStyles.halftone}
 					width={2880}
 					height={352}
 				/>
-				<h1 className={styles.pageTitle}>Comic Closet</h1>
+				<h1 className={headerStyles.pageTitle}>Comic Closet</h1>
 			</header>
-			<div className={styles.welcomeHeader}>
+			<div className={welcomeStyles.welcomeHeader}>
 				<h3>New Comics!</h3>
 				<h2>Coming Out Daily</h2>
 				<p>Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>

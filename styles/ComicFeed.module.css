@@ -21,9 +21,9 @@
 }
 
 .pageSelector p {
-	font: normal normal normal 18px/16px Karla;
+	font: normal normal normal 18px/16px var(--Karla);
 	font-size: 18px;
-	font-weight: 600;
+	font-weight: 400;
 }
 
 .pageSelector button{
@@ -36,8 +36,10 @@
 	width: 35px;
 }
 
-/**   Phone   **/
-@media only screen and (max-width: 500px) {}
 
 /**   Tablet   **/
 @media only screen and (max-width: 800px) and (min-width: 500px) {}
+
+
+/**   Phone   **/
+@media only screen and (max-width: 500px) {}
