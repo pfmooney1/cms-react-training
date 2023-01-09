@@ -1,24 +1,9 @@
-import { useEffect, useState } from "react";
-import { useApiFetch } from '../hooks/useApiFetch';
-import useLocalStorage from '../hooks/useLocalStorageSave';
 import ComicsFeed from "./comics-feed";
 import FavoritesPanel from "./favorites-panel";
 import styles from "../../styles/App.module.css";
 
 
-export function Main(props : any) {
-	const [favoritesList, setValue, addFavorite, removeFavorite, clearStorage] = useLocalStorage("favoritesList", []);
-	let [userPreferences, updateUserPreferences] = useState({
-		filterType: "",
-		filterValue: 30,
-		page: 1
-	});
-	let [comicsData, fetchAndHandleData] = useApiFetch(userPreferences);
-
-	useEffect(() => {
-		fetchAndHandleData();
-	}, [userPreferences]);
-
+export function Main({comicsData, favoritesList, addFavorite, removeFavorite, userPreferences, updateUserPreferences, clearStorage} : any) {
 	function characterSelect(value : any) {
 		document.getElementById('creatorSelector').value = "";
 		updateUserPreferences({

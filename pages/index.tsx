@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useApiFetch } from './hooks/useApiFetch';
+import useLocalStorage from './hooks/useLocalStorageSave';
 import Head from 'next/head';
 import Image from 'next/image';
 import Footer from '../pages/components/footer';
@@ -5,6 +8,19 @@ import Main from '../pages/components/main-feed-favorites'
 import styles from '../styles/App.module.css';
 
 export default function Home() {
+	const [favoritesList, setValue, addFavorite, removeFavorite, clearStorage] = useLocalStorage("favoritesList", []);
+	let [userPreferences, updateUserPreferences] = useState({
+		filterType: "",
+		filterValue: 30,
+		page: 1
+	});
+	let [comicsData, fetchAndHandleData] = useApiFetch(userPreferences);
+
+	useEffect(() => {
+		fetchAndHandleData();
+	}, [userPreferences]);
+
+
 	return (
 		<div className={styles.appContainer}>
 			<Head>
@@ -21,8 +37,17 @@ export default function Home() {
 					width={120}
 					height={120}
 				/>
+				<div className={styles.navBar}>
+					<a href="#">Home</a>
+					<a href="#">Shop</a>
+					<a href="#">
+						<i className="fas fa-bolt"></i>
+						My Favorites
+						<span className={styles.favoritesCount}>   ({favoritesList.length})</span>
+					</a>
+				</div>
 				<Image
-					src="/halftone@2x.png"
+					src="/halftone.png"
 					alt="Image fade"
 					className={styles.halftone}
 					width={2880}
@@ -30,7 +55,20 @@ export default function Home() {
 				/>
 				<h1 className={styles.pageTitle}>Comic Closet</h1>
 			</header>
-			<Main />
+			<div className={styles.welcomeHeader}>
+				<h3>New Comics!</h3>
+				<h2>Coming Out Daily</h2>
+				<p>Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+			</div>
+			<Main 
+				comicsData={comicsData}
+				favoritesList={favoritesList}
+				addFavorite={addFavorite}
+				removeFavorite={removeFavorite}
+				userPreferences={userPreferences}
+				updateUserPreferences={updateUserPreferences}
+				clearStorage={clearStorage}
+			/>
 			<Footer />
 		</div>
 	)

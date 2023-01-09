@@ -18,7 +18,6 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
 			<ul>
 				{favoritesMapped}
 			</ul>
-			<button onClick={clearStorage}>DEBUG: Clear storage</button>
 		</div>
 	);
 
@@ -30,8 +29,10 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
 		return (
 			<li 
 				className={FavStyles.favoriteCard}
-				onClick={() => removeFavorite(index)}
 			>
+				<button className={FavStyles.deleteButton}
+					onClick={() => removeFavorite(index)}
+				>&#10006;</button>
 				<Image
 					src={favItem.imageSrc}
 					alt={altText}

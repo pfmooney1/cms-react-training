@@ -5,7 +5,7 @@
 	grid-area: favorites;
 	min-height: 500px;
 	text-align: center;
-	width: 350px;
+	width: auto;
 }
 
 .favoritesPanel ul {
@@ -20,8 +20,7 @@
 }
 
 
-
-/*! Favorites Card */
+/** Favorites Card **/
 .favoriteCard {
 	display: grid;
 	font-family: inherit;
@@ -33,6 +32,7 @@
 		"image issue";
 	gap: 5px;
 	margin: 20px 30px;
+	position: relative;
 	text-align: left;
 }
 
@@ -46,7 +46,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: 200px;
+	max-width: 200px;
 	font-family: inherit;
 }
 
@@ -54,3 +54,30 @@
 	grid-area: issue;
 	font-family: inherit;
 }
+
+.favoriteCard .deleteButton {
+	background-color: var(--off-white);
+	border: none;
+	border-radius: 50%;
+	box-sizing: content-box;
+	color: var(--red);
+	font-size: 12px;
+	font-weight: 700;
+	height: 14px;
+	left: -10px;
+	line-height: 0;
+	opacity: .85;
+	padding: 2px;
+	position: relative;
+	text-align: center;
+	top: -95px;
+	width: 14px;
+	z-index: 10;
+}
+
+
+/**   Phone   **/
+@media only screen and (max-width: 500px) {}
+
+/**   Tablet   **/
+@media only screen and (max-width: 800px) and (min-width: 500px) {}
