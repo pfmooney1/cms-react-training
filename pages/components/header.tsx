@@ -1,7 +1,19 @@
 import Image from 'next/image';
+import { useState } from 'react';
 import headerStyles from '../../styles/header.module.css';
 
 export function Header({ favoritesList } : any) {
+	const [navCollapsed, toggleNavCollapsed] = useState(false)
+
+	function toggleNav() {
+		toggleNavCollapsed(prev => !prev);
+	}
+
+	function showNav() {
+		if (navCollapsed) return `${headerStyles.navBar}`;
+		if (!navCollapsed) return `${headerStyles.navBar} ${headerStyles.navCollapsed}`;
+	}
+	let visible = showNav();
 	return (
 			<header className={headerStyles.header}>
 				<Image
@@ -11,15 +23,17 @@ export function Header({ favoritesList } : any) {
 					width={120}
 					height={120}
 				/>
-				<div className={headerStyles.navBar}>
-					<a href="#">Home</a>
-					<a href="#">Shop</a>
+				<div className={visible}>
+				{navCollapsed && <><a href="#">Home</a><a href="#">Shop</a></>}
+
 					<a href="#">
 						<i className="fas fa-bolt"></i>
-						My Favorites
+						{navCollapsed && "My Favorites"}
 						<span className={headerStyles.favoritesCount}>   ({favoritesList.length})</span>
 					</a>
-					<button><i className="fas fa-bars"></i></button>
+				<button className={headerStyles.hamburger} onClick={toggleNav}>
+					<i className="fas fa-bars"></i>
+				</button>
 				</div>
 				<Image
 					src="/halftone.png"

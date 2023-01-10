@@ -92,7 +92,7 @@ export function useApiFetch(userPreferences: any) {
 				console.log("Error: ", error);
 			}
 		};
-		fetchData();
+		// fetchData();
 	}
 	useEffect(() => {
 		fetchAndHandleData();

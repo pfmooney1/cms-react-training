@@ -1,13 +1,14 @@
 import ComicsFeed from "./comics-feed";
+import Image from "next/image";
 import FavoritesPanel from "./favorites-panel";
 import styles from "../../styles/App.module.css";
+import FavStyles from "../../styles/favorites-panel.module.css";
 import { useState } from "react";
 
 
 export function Main({comicsData, favoritesList, addFavorite, removeFavorite, userPreferences, updateUserPreferences, clearStorage} : any) {
 
-	const [filterVisible, updateFilterVisible] = useState(true) 
-
+	
 	function characterSelect(value : any) {
 		document.getElementById('creatorSelector').value = "";
 		updateUserPreferences({
@@ -16,7 +17,7 @@ export function Main({comicsData, favoritesList, addFavorite, removeFavorite, us
 			page: 1
 		})
 	}
-
+	
 	function creatorSelect(value: any) {
 		document.getElementById('characterSelector').value = "";
 		updateUserPreferences({
@@ -26,6 +27,8 @@ export function Main({comicsData, favoritesList, addFavorite, removeFavorite, us
 		})
 	}
 
+	const [filterVisible, updateFilterVisible] = useState(false) 
+	
 	function toggleFilter() {
 		updateFilterVisible(prev => !prev);
 	}
@@ -35,7 +38,36 @@ export function Main({comicsData, favoritesList, addFavorite, removeFavorite, us
 		if (!filterVisible) return `${styles.filterSelects} ${styles.hidden}`;
 	}
 
+	const [favoritesVisible, updateFavoritesVisible] = useState(false)
+
+	function toggleFavorites() {
+		updateFavoritesVisible(prev => !prev);
+	}
+
+	function hideDisplayFavorites() {
+		if (favoritesVisible) return `${FavStyles.favoritesPanel}`;
+		if (!favoritesVisible) return `${FavStyles.favoritesPanel} ${FavStyles.hidden}`;
+	}
+	let visible = hideDisplayFavorites();
+
+
+
+
+
+
+	const [preview, togglePreview] = useState(false)
+
+	function toggleNav() {
+		toggleNavCollapsed(prev => !prev);
+	}
+
+	function showNav() {
+		if (navCollapsed) return `${headerStyles.navBar}`;
+		if (!navCollapsed) return `${headerStyles.navBar} ${headerStyles.navCollapsed}`;
+	}
+
 	return (
+		// <>
 		<main className={styles.main}>
 			<form className={styles.filters}>
 				<span onClick={toggleFilter}>Filter <i className="fas fa-filter"></i></span>
@@ -62,6 +94,10 @@ export function Main({comicsData, favoritesList, addFavorite, removeFavorite, us
 						<option value="14278">Test</option>
 					</select>
 				</div>
+				<span onClick={toggleFavorites} className={styles.showFavoritesButton}>
+					{favoritesVisible ? "Hide " : "Show "}
+					Favorites <i className="fas fa-bolt"></i>
+				</span>
 			</form>
 			<ComicsFeed
 				comicsData={comicsData}
@@ -72,11 +108,23 @@ export function Main({comicsData, favoritesList, addFavorite, removeFavorite, us
 				updateUserPreferences={updateUserPreferences}
 			/>
 			<FavoritesPanel
+				visible={visible}
+				toggleFavorites={toggleFavorites}
 				clearStorage={clearStorage}
 				favoritesList={favoritesList}
 				removeFavorite={removeFavorite}
 			/>
 		</main>
+		/* <div className={styles.overlay}>
+				<Image
+					className={styles.overlayImage}
+					src={comicsData[0].imageSrc}
+					alt={comicsData[0].altText}
+					width={600}
+					height={800}
+				/>
+		</div>
+		</> */
 	)
 }
 

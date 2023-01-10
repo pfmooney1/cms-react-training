@@ -2,6 +2,7 @@
 	align-self: start;
 	background-color: var(--off-black);
 	color: white;
+	display: block;
 	grid-area: favorites;
 	min-height: 500px;
 	text-align: center;
@@ -10,6 +11,7 @@
 }
 
 .favoritesPanel ul {
+	display: block;
 	font-family: Karla, serif;
 	font-size: 18px;
 	gap: 10px;
@@ -20,6 +22,9 @@
 	font-family: inherit;
 }
 
+	.showFavoritesButton {
+		display: none;
+	}
 
 /** Favorites Card **/
 .favoriteCard {
@@ -84,7 +89,7 @@
 /**   Phone   **/
 @media only screen and (max-width: 500px) {
 	.favoritesPanel {
-		display: none;
+		display: grid;
 		min-height: 500px;
 		width: auto;
 		padding: 0;
@@ -146,5 +151,19 @@
 		top: -95px;
 		width: 14px;
 		z-index: 10;
+	}
+	.favoritesPanel.hidden {
+		display: none;
+	}
+	.showFavoritesButton {
+		background-color: var(--red);
+		color: var(--off-white);
+		font-family: var(--Karla);
+		font-size: 16px;
+		display: block;
+		border: none;
+		height: fit-content;
+		align-self: end;
+		padding: 8px;
 	}
 }

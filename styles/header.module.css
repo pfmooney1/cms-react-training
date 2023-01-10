@@ -43,7 +43,9 @@ h1.pageTitle {
 	z-index: 100;
 }
 
-
+.hamburger {
+	display: none;
+}
 
 /**=====  Nav Bar  ===== */
 .navBar {
@@ -132,14 +134,18 @@ h1.pageTitle {
 		
 	/**=====  Nav Bar  ===== */
 	.navBar {
-		align-items: center;
+		align-items: flex-end;
 		display: flex;
-		flex-direction: row;
-		gap: 20px;
+		flex-direction: column-reverse;
+		gap: 10px;
 		justify-items: center;
-		position: absolute;
 		right: 20px;
 		top: 20px;
+	}
+
+	.navBar.navCollapsed {
+		align-items: center;
+		flex-direction: row;
 	}
 
 	.navBar button {
@@ -155,6 +161,10 @@ h1.pageTitle {
 	.navBar .favoritesCount {
 		color: var(--off-white);
 		font-weight: 400;
+	}
+
+	.hamburger {
+		display: block;
 	}
 
 }

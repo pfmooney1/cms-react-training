@@ -2,7 +2,7 @@ import React from "react";
 import FavStyles from "../../styles/favorites-panel.module.css";
 import Image from "next/image";
 
-function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
+function FavoritesPanel({ clearStorage, favoritesList, removeFavorite, visible, toggleFavorites } : any) {
 	let favoritesMapped = favoritesList.map((favItem: any, index: number) => (
 		<FavoritesLI 
 			favItem={favItem}
@@ -13,11 +13,15 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
 	))
 
 	return (
-		<div className={FavStyles.favoritesPanel}>
+		<div className={visible}>
 			<h2>Favorites: {favoritesList.length}</h2>
 			<ul>
 				{favoritesMapped}
 			</ul>
+			<button onClick={toggleFavorites} className={FavStyles.showFavoritesButton}>
+				{visible ? "Hide " : "Show "}
+				Favorites <i className="fas fa-bolt"></i>
+			</button>
 		</div>
 	);
 
