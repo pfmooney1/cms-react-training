@@ -24,8 +24,9 @@
 	font-size: inherit;
 	gap: 8px;
 	grid-area: filters;
-	height: 60px;
-	padding: 0 20px;
+	min-height: 55px;
+	height: fit-content;
+	padding: 2px 20px;
 }
 
 .filters select {
@@ -34,6 +35,10 @@
 	color: var(--off-white);
 	font-family: inherit;
 	font-size: inherit;
+}
+
+.filterSelects {
+	display: block;
 }
 
 #comics-grid {
@@ -90,6 +95,7 @@
 			"favorites"
 			"comics-feed"
 			"footer";
+		gap: 1px;
 		width: 90%;
 	}
 
@@ -98,5 +104,13 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		grid-area: filters;
+	}
+
+	.filters select {
+		margin-bottom: 5px;
+	}
+
+	.filterSelects.hidden {
+		display: none;
 	}
 }

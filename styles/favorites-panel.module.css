@@ -6,6 +6,7 @@
 	min-height: 500px;
 	text-align: center;
 	width: auto;
+	padding: 0;
 }
 
 .favoritesPanel ul {
@@ -81,4 +82,69 @@
 
 
 /**   Phone   **/
-@media only screen and (max-width: 500px) {}
+@media only screen and (max-width: 500px) {
+	.favoritesPanel {
+		display: none;
+		min-height: 500px;
+		width: auto;
+		padding: 0;
+	}
+
+	.favoritesPanel ul {
+		font-family: Karla, serif;
+		font-size: 18px;
+		gap: 10px;
+		margin: 0;
+		padding: 0 0 20px 0;
+	}
+
+
+	/** Favorites Card **/
+	.favoriteCard {
+		display: grid;
+		font-family: inherit;
+		font-size: medium;
+		grid-template-columns: 65px 1fr;
+		grid-template-rows: 70px minmax(1fr 50px);
+		grid-template-areas:
+			"image title"
+			"image issue";
+		gap: 5px;
+		margin: 20px 30px;
+		position: relative;
+		text-align: left;
+	}
+
+	.title {
+		display: block;
+		grid-area: title;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		max-width: 200px;
+		font-family: inherit;
+	}
+
+	.issue {
+		grid-area: issue;
+		font-family: inherit;
+	}
+
+	.favoriteCard .deleteButton {
+		border-radius: 50%;
+		box-sizing: content-box;
+		color: var(--red);
+		font-size: 12px;
+		font-weight: 700;
+		height: 14px;
+		left: -10px;
+		line-height: 0;
+		opacity: .85;
+		padding: 2px;
+		position: relative;
+		text-align: center;
+		top: -95px;
+		width: 14px;
+		z-index: 10;
+	}
+}

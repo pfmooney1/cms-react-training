@@ -9,7 +9,7 @@
 }
 
 .card h3 {
-	font-size: 18px;
+	font-size: inherit;
 	font-weight: 700;
 	margin: 10px 0 0 0;
 	padding: 20px 0;
@@ -17,7 +17,7 @@
 
 .card ul {
 	font-family: var(--Karla);
-	font-size: 18px;
+	font-size: inherit;
 	list-style-type: none;
 	list-style-position: outside;
 	margin: 0;
@@ -39,6 +39,7 @@
 .detail {
 	display: grid;
 	grid-area: detail;
+	font-size: 18px;
 	height: fit-content;
 	justify-self: baseline;
 	max-width: 185px;
@@ -70,6 +71,7 @@ button.button_detail {
 	width: 50px;
 	z-index: 100;
 }
+
 button.favorite {
 	background-color: var(--red);
 	border: 2px solid var(--off-white);
@@ -82,20 +84,27 @@ button.favorite {
 /**   Phone   **/
 @media only screen and (max-width: 500px) {
 	.card {
-		grid-template-columns: 3fr 1fr;
-		grid-template-rows: 250px;
+		grid-template-columns: 2fr 1fr;
+		grid-template-rows: 188px;
 		grid-template-areas: "detail image";
 	}
 
-	.card Image {
-		height: auto;
-		width: auto;
+	.image {
+		height: 188px;
+		width: 125px;
 	}
 
 	.detail {
 		height: fit-content;
 		max-width: 100%;
 		width: 100%;
+		font-size: 16px;
+	}
+
+	.card h3 {
+		font-weight: 700;
+		margin: 5px 0 12px 0;
+		padding: 0;
 	}
 
 	button.button_detail {
@@ -103,8 +112,10 @@ button.favorite {
 		grid-area: detail;
 		height: 40px;
 		padding: 5px;
-		top: 120px;
-		right: -100px;
+		top: 0px;
+		right: -20px;
+		justify-self: end;
+		align-self: center;
 		width: 40px;
 	}
 }

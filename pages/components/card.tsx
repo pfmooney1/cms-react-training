@@ -2,7 +2,7 @@ import Detail from './card-detail';
 import Image from 'next/image';
 import Button_favorite from './card-button-favorite';
 import Button_unfavorite from './card-button-unfavorite';
-import cardstyles from '../../styles/Card.module.css';
+import cardstyles from '../../styles/card.module.css';
 
 
 export function Card({ comic, favoritesList, addFavorite, removeFavorite } : any) {
@@ -32,6 +32,7 @@ export function Card({ comic, favoritesList, addFavorite, removeFavorite } : any
 	return (
 		<div className={cardstyles.card}>
 			<Image
+				className={cardstyles.image}
 				src={comic.imageSrc}
 				alt={altText}
 				width={185}

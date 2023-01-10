@@ -1,4 +1,4 @@
-import cardstyles from '../../styles/Card.module.css';
+import cardstyles from '../../styles/card.module.css';
 import Script from 'next/script';
 
 type Props = {

@@ -1,5 +1,5 @@
 import React from "react";
-import FavStyles from "../../styles/FavoritesPanel.module.css";
+import FavStyles from "../../styles/favorites-panel.module.css";
 import Image from "next/image";
 
 function FavoritesPanel({ clearStorage, favoritesList, removeFavorite } : any) {
