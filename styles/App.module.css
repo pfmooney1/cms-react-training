@@ -124,10 +124,13 @@
 	height: 95vh;
 	width: auto;
 }
-.hidden {
-	display: none;
-}
 
+@media screen and (orientation: portrait) {
+	.overlayImage {
+			height: auto;
+			width: 90vw;
+		}
+}
 
 
 /**   Tablet   **/

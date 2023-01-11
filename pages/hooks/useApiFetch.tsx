@@ -91,7 +91,7 @@ export function useApiFetch(userPreferences: any) {
 				console.log("Error: ", error);
 			}
 		};
-		// fetchData();
+		fetchData();
 		console.log("API RAN!!!!!! ")
 	}
 	useEffect(() => {
