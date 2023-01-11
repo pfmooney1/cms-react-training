@@ -7,8 +7,6 @@ import { useState } from "react";
 
 
 export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, userPreferences, updateUserPreferences, clearStorage }: any) {
-
-
 	function characterSelect(value: any) {
 		document.getElementById('creatorSelector').value = "";
 		updateUserPreferences({
@@ -17,7 +15,6 @@ export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, u
 			page: 1
 		})
 	}
-
 	function creatorSelect(value: any) {
 		document.getElementById('characterSelector').value = "";
 		updateUserPreferences({
@@ -27,23 +24,25 @@ export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, u
 		})
 	}
 
-	const [filterVisible, updateFilterVisible] = useState(false)
 
+
+	// * Toggles the Filters panel
+	const [filterVisible, updateFilterVisible] = useState(false)
 	function toggleFilter() {
 		updateFilterVisible(prev => !prev);
 	}
-
 	function hideDisplayFilter() {
 		if (filterVisible) return `${styles.filterSelects}`;
 		if (!filterVisible) return `${styles.filterSelects} ${styles.hidden}`;
 	}
 
-	const [favoritesVisible, updateFavoritesVisible] = useState(false)
 
+
+	// * Toggles the Favorites panel
+	const [favoritesVisible, updateFavoritesVisible] = useState(false)
 	function toggleFavorites() {
 		updateFavoritesVisible(prev => !prev);
 	}
-
 	function hideDisplayFavorites() {
 		if (favoritesVisible) return `${FavStyles.favoritesPanel}`;
 		if (!favoritesVisible) return `${FavStyles.favoritesPanel} ${FavStyles.hidden}`;
@@ -54,7 +53,10 @@ export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, u
 		// <>
 		<main className={styles.main}>
 			<form className={styles.filters}>
-				<span onClick={toggleFilter}>Filter <span className={styles.desktop}>by:</span><span className={styles.mobile}><i className="fas fa-filter"></i></span></span>
+				<button onClick={toggleFilter} className={styles.disguisedButton}>
+					<span className={styles.desktop}>Filter by:</span>
+					<span className={styles.mobile}>Filter <i className="fas fa-filter"></i></span>
+				</button>
 				<div className={hideDisplayFilter()}>
 					<select id="characterSelector" onChange={characterSelect}>
 						<option value="">Character</option>
@@ -78,10 +80,9 @@ export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, u
 						<option value="14278">Test</option>
 					</select>
 				</div>
-				<span onClick={toggleFavorites} className={styles.showFavoritesButton}>
-					{favoritesVisible ? "Hide " : "Show "}
-					Favorites <i className="fas fa-bolt"></i>
-				</span>
+				<button onClick={toggleFavorites} className={`${styles.showFavoritesButton} ${styles.disguisedButton}`}>
+					{favoritesVisible ? "Hide " : "Show "} Favorites <i className="fas fa-bolt"></i>
+				</button>
 			</form>
 			<ComicsFeed
 				comicsData={comicsData}

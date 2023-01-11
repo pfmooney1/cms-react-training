@@ -35,6 +35,7 @@
 	color: var(--off-white);
 	font-family: inherit;
 	font-size: inherit;
+	margin-right: 15px;
 }
 
 .filters select:focus {
@@ -53,6 +54,13 @@
 	display: inline;
 }
 
+.disguisedButton {
+	border: none;
+	background-color: transparent;
+	color: white;
+	font-family: var(--Karla);
+	font-size: inherit;
+}
 #comics-grid {
 	grid-area: comics-feed;
 }
