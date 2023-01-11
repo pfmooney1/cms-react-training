@@ -5,7 +5,7 @@
 	grid-template-columns: 185px;
 	grid-template-rows: 275px 275px;
 	grid-template-areas: "image"
-						"detail";
+		"detail";
 }
 
 .card h3 {
@@ -58,7 +58,7 @@
 
 button.button_detail {
 	background-color: var(--off-black);
-	border: 0px outset aliceblue;
+	border: 0px outset var(--off-white);
 	border-radius: 50%;
 	color: var(--off-white);
 	font-size: 1.6em;
@@ -72,17 +72,21 @@ button.button_detail {
 	z-index: 100;
 }
 
+button.button_detail:focus {
+	border: 5px outset var(--off-white);
+}
+
 button.favorite {
 	background-color: var(--red);
 	border: 2px solid var(--off-white);
 }
 
 /**   Tablet   **/
-@media only screen and (max-width: 800px) and (min-width: 500px) {}
+@media only screen and (max-width: 800px) and (min-width: 600px) {}
 
 
 /**   Phone   **/
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
 	.card {
 		grid-template-columns: 2fr 1fr;
 		grid-template-rows: 188px;

@@ -39,13 +39,30 @@
 
 
 /**   Tablet   **/
-@media only screen and (max-width: 800px) and (min-width: 500px) {
+@media only screen and (max-width: 800px) and (min-width: 600px) {
 
+	/**=====  Welcome Panel  =====*/
+	.welcomeHeader {
+		width: 75%;
+		padding-bottom: 25px;
+	}
+
+	.welcomeHeader h2 {
+		color: var(--red);
+		font-size: 20px;
+	}
+
+	.welcomeHeader h3 {
+		font-size: 16px;
+		top: 0.5em;
+		right: 0.5em;
+	}
 }
 
 
 /**   Phone   **/
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
+
 	/**=====  Welcome Panel  =====*/
 	.welcomeHeader {
 		width: 90%;

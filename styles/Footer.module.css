@@ -22,10 +22,10 @@
 
 
 /**   Tablet   **/
-@media only screen and (max-width: 800px) and (min-width: 500px) {}
+@media only screen and (max-width: 800px) and (min-width: 600px) {}
 
 /**   Phone   **/
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
 	.footer {
 		padding: 2rem 5px;
 	}

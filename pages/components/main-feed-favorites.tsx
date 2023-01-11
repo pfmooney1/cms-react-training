@@ -6,10 +6,10 @@ import FavStyles from "../../styles/favorites-panel.module.css";
 import { useState } from "react";
 
 
-export function Main({comicsData, favoritesList, addFavorite, removeFavorite, userPreferences, updateUserPreferences, clearStorage} : any) {
+export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, userPreferences, updateUserPreferences, clearStorage }: any) {
 
-	
-	function characterSelect(value : any) {
+
+	function characterSelect(value: any) {
 		document.getElementById('creatorSelector').value = "";
 		updateUserPreferences({
 			filterType: "character",
@@ -17,7 +17,7 @@ export function Main({comicsData, favoritesList, addFavorite, removeFavorite, us
 			page: 1
 		})
 	}
-	
+
 	function creatorSelect(value: any) {
 		document.getElementById('characterSelector').value = "";
 		updateUserPreferences({
@@ -27,8 +27,8 @@ export function Main({comicsData, favoritesList, addFavorite, removeFavorite, us
 		})
 	}
 
-	const [filterVisible, updateFilterVisible] = useState(false) 
-	
+	const [filterVisible, updateFilterVisible] = useState(false)
+
 	function toggleFilter() {
 		updateFilterVisible(prev => !prev);
 	}
@@ -50,27 +50,11 @@ export function Main({comicsData, favoritesList, addFavorite, removeFavorite, us
 	}
 	let visible = hideDisplayFavorites();
 
-
-
-
-
-
-	const [preview, togglePreview] = useState(false)
-
-	function toggleNav() {
-		toggleNavCollapsed(prev => !prev);
-	}
-
-	function showNav() {
-		if (navCollapsed) return `${headerStyles.navBar}`;
-		if (!navCollapsed) return `${headerStyles.navBar} ${headerStyles.navCollapsed}`;
-	}
-
 	return (
 		// <>
 		<main className={styles.main}>
 			<form className={styles.filters}>
-				<span onClick={toggleFilter}>Filter <i className="fas fa-filter"></i></span>
+				<span onClick={toggleFilter}>Filter <span className={styles.desktop}>by:</span><span className={styles.mobile}><i className="fas fa-filter"></i></span></span>
 				<div className={hideDisplayFilter()}>
 					<select id="characterSelector" onChange={characterSelect}>
 						<option value="">Character</option>

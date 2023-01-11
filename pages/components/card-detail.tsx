@@ -1,6 +1,6 @@
 import cardstyles from '../../styles/card.module.css';
 
-export function Detail({ comic } : any) {
+export function Detail({ comic }: any) {
 	if (!comic) return null;
 	return (
 		<div className={cardstyles.detail} data-testid="detailComponent">
@@ -14,7 +14,7 @@ export function Detail({ comic } : any) {
 				<li>
 					<span className={cardstyles.detail_label}>Published:</span>
 					<br />
-					<span className={cardstyles.detail_data} data-testid="date">{ comic.date || "N/A"}</span>
+					<span className={cardstyles.detail_data} data-testid="date">{comic.date || "N/A"}</span>
 				</li>
 
 				<li>

@@ -22,9 +22,9 @@
 	font-family: inherit;
 }
 
-	.showFavoritesButton {
-		display: none;
-	}
+.showFavoritesButton {
+	display: none;
+}
 
 /** Favorites Card **/
 .favoriteCard {
@@ -33,7 +33,7 @@
 	font-size: medium;
 	grid-template-columns: 65px 1fr;
 	grid-template-rows: 70px minmax(1fr 50px);
-	grid-template-areas: 
+	grid-template-areas:
 		"image title"
 		"image issue";
 	gap: 5px;
@@ -81,13 +81,12 @@
 	z-index: 10;
 }
 
+.favoriteCard .deleteButton:focus {
+	scale: 1.5;
+}
 
 /**   Tablet   **/
-@media only screen and (max-width: 800px) and (min-width: 500px) {}
-
-
-/**   Phone   **/
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) and (min-width: 600px) {
 	.favoritesPanel {
 		display: grid;
 		min-height: 500px;
@@ -152,9 +151,96 @@
 		width: 14px;
 		z-index: 10;
 	}
+
 	.favoritesPanel.hidden {
 		display: none;
 	}
+
+	.showFavoritesButton {
+		background-color: var(--red);
+		color: var(--off-white);
+		font-family: var(--Karla);
+		font-size: 16px;
+		display: block;
+		border: none;
+		height: fit-content;
+		align-self: end;
+		padding: 8px;
+	}
+}
+
+
+/**   Phone   **/
+@media only screen and (max-width: 600px) {
+	.favoritesPanel {
+		display: grid;
+		min-height: 500px;
+		width: auto;
+		padding: 0;
+	}
+
+	.favoritesPanel ul {
+		font-family: Karla, serif;
+		font-size: 18px;
+		gap: 10px;
+		margin: 0;
+		padding: 0 0 20px 0;
+	}
+
+
+	/** Favorites Card **/
+	.favoriteCard {
+		display: grid;
+		font-family: inherit;
+		font-size: medium;
+		grid-template-columns: 65px 1fr;
+		grid-template-rows: 70px minmax(1fr 50px);
+		grid-template-areas:
+			"image title"
+			"image issue";
+		gap: 5px;
+		margin: 20px 30px;
+		position: relative;
+		text-align: left;
+	}
+
+	.title {
+		display: block;
+		grid-area: title;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		max-width: 200px;
+		font-family: inherit;
+	}
+
+	.issue {
+		grid-area: issue;
+		font-family: inherit;
+	}
+
+	.favoriteCard .deleteButton {
+		border-radius: 50%;
+		box-sizing: content-box;
+		color: var(--red);
+		font-size: 12px;
+		font-weight: 700;
+		height: 14px;
+		left: -10px;
+		line-height: 0;
+		opacity: .85;
+		padding: 2px;
+		position: relative;
+		text-align: center;
+		top: -95px;
+		width: 14px;
+		z-index: 10;
+	}
+
+	.favoritesPanel.hidden {
+		display: none;
+	}
+
 	.showFavoritesButton {
 		background-color: var(--red);
 		color: var(--off-white);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useLocalStorage(key : string, initialValue : any) {
+function useLocalStorage(key: string, initialValue: any) {
 	const [favoritesList, setStoredValue] = useState(() => {
 		if (typeof window === "undefined") {
 			return initialValue;
@@ -13,7 +13,7 @@ function useLocalStorage(key : string, initialValue : any) {
 			return initialValue;
 		}
 	});
-	const setValue = (value : any) => {
+	const setValue = (value: any) => {
 		try {
 			const valueToStore = value instanceof Function ? value(favoritesList) : value;
 			setStoredValue(valueToStore);
@@ -24,7 +24,7 @@ function useLocalStorage(key : string, initialValue : any) {
 			console.log(error);
 		}
 	};
-	function addFavorite(value : any) {
+	function addFavorite(value: any) {
 		let tempArray = [...favoritesList];
 		if (tempArray.length >= 10) return;
 		tempArray.push(value);
@@ -33,7 +33,7 @@ function useLocalStorage(key : string, initialValue : any) {
 			window.localStorage.setItem(key, JSON.stringify(tempArray));
 		}
 	};
-	function removeFavorite(index : number) {
+	function removeFavorite(index: number) {
 		let tempArray = [...favoritesList];
 		tempArray.splice(index, 1);
 		setValue(tempArray);

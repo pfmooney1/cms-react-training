@@ -5,15 +5,15 @@ import Button_unfavorite from './card-button-unfavorite';
 import cardstyles from '../../styles/card.module.css';
 
 
-export function Card({ comic, favoritesList, addFavorite, removeFavorite } : any) {
+export function Card({ comic, favoritesList, addFavorite, removeFavorite }: any) {
 	let altText = `Cover for '${comic.title}'`
-	let arrayOfFavoriteIDs : any = [];
+	let arrayOfFavoriteIDs: any = [];
 	favoritesList.forEach(fav => {
 		if (fav.id !== undefined) {
 			arrayOfFavoriteIDs.push(fav.id);
 		};
 	});
-	
+
 	function returnButton() {
 		if (arrayOfFavoriteIDs.includes(comic.id)) {
 			return <Button_unfavorite

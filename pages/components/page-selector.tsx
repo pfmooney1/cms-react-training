@@ -1,8 +1,8 @@
 import ComicFeedStyles from '../../styles/comics-feed.module.css';
 
-function PageSelector({ userPreferences, updateUserPreferences, totalFromThisSet } : any) {
-	let firstComicOnPage = ((userPreferences.page - 1) * 20) + 1;
-	let lastComicOnPage = firstComicOnPage + 19;
+function PageSelector({ userPreferences, updateUserPreferences, totalFromThisSet }: any) {
+	let firstComicOnPage = ((userPreferences.page - 1) * 15) + 1;
+	let lastComicOnPage = firstComicOnPage + 14;
 	if (lastComicOnPage > totalFromThisSet) {
 		lastComicOnPage = totalFromThisSet;
 	}

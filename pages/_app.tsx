@@ -5,7 +5,7 @@ type Props = {
   pageProps: any;
 }
 
-function MyApp({ Component, pageProps } : Props) {
+function MyApp({ Component, pageProps }: Props) {
   return <Component {...pageProps} />
 }
 

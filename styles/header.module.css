@@ -34,7 +34,7 @@ h1.pageTitle {
 	left: 10px;
 }
 
-.halftone{
+.halftone {
 	width: 100%;
 	height: auto;
 	position: absolute;
@@ -59,12 +59,18 @@ h1.pageTitle {
 	top: 50px;
 }
 
-.navBar a, .navBar button {
-	color: var(--off-white); 
+.navBar a,
+.navBar button {
+	color: var(--off-white);
 	font-size: 18px;
 	font-weight: 600;
 	background-color: transparent;
 	border: none;
+}
+.navBar a:focus,
+.navBar button:focus {
+	background-color: #00000080;
+	border: 2px solid white;
 }
 
 .navBar i {
@@ -79,13 +85,24 @@ h1.pageTitle {
 
 
 /**   Tablet   **/
-@media only screen and (max-width: 800px) and (min-width: 500px) {
+@media only screen and (max-width: 800px) and (min-width: 600px) {
+	h1.pageTitle {
+		font-size: 50px;
+		padding: 2px 30px;
+		width: fit-content;
+		height: fit-content;
+	}
 
+	.CCLogo {
+		height: 90px;
+		width: 90px;
+	}
 }
 
 
 /**   Phone   **/
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
+
 	/**=====  Header  =====*/
 	header.header {
 		background: transparent url('../public/hero-photo.png') 0% 0% no-repeat padding-box;
@@ -131,7 +148,7 @@ h1.pageTitle {
 	}
 
 
-		
+
 	/**=====  Nav Bar  ===== */
 	.navBar {
 		align-items: flex-end;
@@ -167,4 +184,7 @@ h1.pageTitle {
 		display: block;
 	}
 
+	.hidden {
+		display: none;
+	}
 }

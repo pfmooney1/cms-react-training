@@ -51,10 +51,10 @@ export function useApiFetch(userPreferences: any) {
 
 	const [comicsData, getComicsData] = useState(sampleData);
 	function fetchAndHandleData() {
-		let {filterType, filterValue, page} = userPreferences;
+		let { filterType, filterValue, page } = userPreferences;
 
 		function formatTheURL(filterType, filterValue, page) {
-			let offsetAmount = (page - 1) * 20;
+			let offsetAmount = (page - 1) * 15;
 			let modifier = "";
 			if (filterType == "character") {
 				modifier = `characters/${filterValue}/`;
@@ -63,14 +63,14 @@ export function useApiFetch(userPreferences: any) {
 				modifier = `creators/${filterValue}/`;
 			}
 			if (!filterType || filterType == "" || filterValue == "") {
-				modifier ="";
+				modifier = "";
 			}
 			let offset = ""
 			if (page >= 2) {
 				offset = `offset=${offsetAmount}&`;
 			}
 			const address = `http://gateway.marvel.com/v1/public/`;
-			const apiKey = "&ts=1&apikey=deeef1f1563086552c1c70bec9bad13c&hash=3907e3cae8ca9355f8ef1bced483e9ad";
+			const apiKey = "&ts=1&limit=15&apikey=deeef1f1563086552c1c70bec9bad13c&hash=3907e3cae8ca9355f8ef1bced483e9ad";
 			const getComics = "comics?";
 			return address + modifier + getComics + offset + apiKey;
 		}
@@ -134,12 +134,12 @@ export function useApiFetch(userPreferences: any) {
 			delete comic.dates;
 		})
 	}
-	function formatCreatorName(creator : any) {
+	function formatCreatorName(creator: any) {
 		if (!creator) return "N/A";
 		if (creator) return `${creator.name}`;
 	}
-	function formatDate(dateToFormat : string) {
-		const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];	
+	function formatDate(dateToFormat: string) {
+		const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 		let rawDate = new Date(dateToFormat);
 		let month = rawDate.getMonth();
 		let day = rawDate.getDate();

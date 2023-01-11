@@ -26,7 +26,7 @@
 	font-weight: 400;
 }
 
-.pageSelector button{
+.pageSelector button {
 	background-color: var(--off-black);
 	border-radius: 50%;
 	color: var(--off-white);
@@ -36,10 +36,16 @@
 	width: 35px;
 }
 
+.pageSelector button:hover,
+.pageSelector button:focus {
+	border: 4px solid var(--off-black);
+	background-color: var(--red);
+}
+
 
 /**   Tablet   **/
-@media only screen and (max-width: 800px) and (min-width: 500px) {}
+@media only screen and (max-width: 800px) and (min-width: 600px) {}
 
 
 /**   Phone   **/
-@media only screen and (max-width: 500px) {}
+@media only screen and (max-width: 600px) {}

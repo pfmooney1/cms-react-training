@@ -2,9 +2,9 @@ import React from "react";
 import FavStyles from "../../styles/favorites-panel.module.css";
 import Image from "next/image";
 
-function FavoritesPanel({ clearStorage, favoritesList, removeFavorite, visible, toggleFavorites } : any) {
+function FavoritesPanel({ clearStorage, favoritesList, removeFavorite, visible, toggleFavorites }: any) {
 	let favoritesMapped = favoritesList.map((favItem: any, index: number) => (
-		<FavoritesLI 
+		<FavoritesLI
 			favItem={favItem}
 			index={index}
 			removeFavorite={removeFavorite}
@@ -14,7 +14,7 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite, visible, 
 
 	return (
 		<div className={visible}>
-			<h2>Favorites: {favoritesList.length}</h2>
+			<h2>Favorites</h2>
 			<ul>
 				{favoritesMapped}
 			</ul>
@@ -26,12 +26,12 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite, visible, 
 	);
 
 
-	
-	function FavoritesLI({ removeFavorite, favItem, index} : any) {
+
+	function FavoritesLI({ removeFavorite, favItem, index }: any) {
 		let altText = `Cover for '${favItem.title}'`
 
 		return (
-			<li 
+			<li
 				className={FavStyles.favoriteCard}
 			>
 				<button className={FavStyles.deleteButton}
