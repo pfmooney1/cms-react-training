@@ -35,6 +35,7 @@ export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, u
 		if (filterVisible) return `${styles.filterSelects}`;
 		if (!filterVisible) return `${styles.filterSelects} ${styles.hidden}`;
 	}
+	let filtersVisible = hideDisplayFilter();
 
 
 
@@ -47,17 +48,17 @@ export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, u
 		if (favoritesVisible) return `${FavStyles.favoritesPanel}`;
 		if (!favoritesVisible) return `${FavStyles.favoritesPanel} ${FavStyles.hidden}`;
 	}
-	let visible = hideDisplayFavorites();
+	let favsVisible = hideDisplayFavorites();
 
 	return (
 		// <>
 		<main className={styles.main}>
-			<form className={styles.filters}>
+			<div className={styles.filters}>
 				<button onClick={toggleFilter} className={styles.disguisedButton}>
 					<span className={styles.desktop}>Filter by:</span>
 					<span className={styles.mobile}>Filter <i className="fas fa-filter"></i></span>
 				</button>
-				<div className={hideDisplayFilter()}>
+				<div className={filtersVisible}>
 					<select id="characterSelector" onChange={characterSelect}>
 						<option value="">Character</option>
 						<option value="1009368">Iron Man</option>
@@ -83,7 +84,7 @@ export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, u
 				<button onClick={toggleFavorites} className={`${styles.showFavoritesButton} ${styles.disguisedButton}`}>
 					{favoritesVisible ? "Hide " : "Show "} Favorites <i className="fas fa-bolt"></i>
 				</button>
-			</form>
+			</div>
 			<ComicsFeed
 				comicsData={comicsData}
 				favoritesList={favoritesList}
@@ -93,7 +94,7 @@ export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, u
 				updateUserPreferences={updateUserPreferences}
 			/>
 			<FavoritesPanel
-				visible={visible}
+				visible={favsVisible}
 				toggleFavorites={toggleFavorites}
 				clearStorage={clearStorage}
 				favoritesList={favoritesList}
