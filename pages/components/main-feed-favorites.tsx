@@ -51,7 +51,6 @@ export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, u
 	let favsVisible = hideDisplayFavorites();
 
 	return (
-		// <>
 		<main className={styles.main}>
 			<div className={styles.filters}>
 				<button onClick={toggleFilter} className={styles.disguisedButton}>
@@ -101,16 +100,6 @@ export function Main({ comicsData, favoritesList, addFavorite, removeFavorite, u
 				removeFavorite={removeFavorite}
 			/>
 		</main>
-		/* <div className={styles.overlay}>
-				<Image
-					className={styles.overlayImage}
-					src={comicsData[0].imageSrc}
-					alt={comicsData[0].altText}
-					width={600}
-					height={800}
-				/>
-		</div>
-		</> */
 	)
 }
 

@@ -1,6 +1,7 @@
-import React from "react";
+import {useState} from "react";
 import FavStyles from "../../styles/favorites-panel.module.css";
 import Image from "next/image";
+import styles from '../../styles/App.module.css'
 
 function FavoritesPanel({ clearStorage, favoritesList, removeFavorite, visible, toggleFavorites }: any) {
 	let favoritesMapped = favoritesList.map((favItem: any, index: number) => (
@@ -28,6 +29,30 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite, visible, 
 
 
 	function FavoritesLI({ removeFavorite, favItem, index }: any) {
+		// * Toggles the Overlay panel
+		const [overlayVisible, updateOverlayVisible] = useState(false)
+		function returnOverlay() {
+			let imgSrc = favItem.imageSrc;
+			let altText = favItem.title;
+			if (!overlayVisible) return null;
+			if (overlayVisible) return (<div className={styles.overlay} onClick={toggleOverlay}>
+				<Image
+					className={styles.overlayImage}
+					src={imgSrc}
+					alt={altText}
+					width={600}
+					height={800}
+				/>
+			</div>);
+		}
+		function toggleOverlay() {
+			updateOverlayVisible(prev => !prev)
+		}
+		function showComicDetail(favItem) {
+			returnOverlay(favItem);
+			updateOverlayVisible(prev => !prev);
+		}
+
 		let altText = `Cover for '${favItem.title}'`
 
 		return (
@@ -38,6 +63,7 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite, visible, 
 					onClick={() => removeFavorite(index)}
 				>&#10006;</button>
 				<Image
+					onClick={() => showComicDetail(favItem)}
 					src={favItem.imageSrc}
 					alt={altText}
 					width={60}
@@ -46,6 +72,7 @@ function FavoritesPanel({ clearStorage, favoritesList, removeFavorite, visible, 
 				/>
 				<span className={FavStyles.title}>{favItem.title}</span>
 				<span className={FavStyles.issue}>Issue: {favItem.issueNumber}</span>
+				{returnOverlay()}
 			</li>
 		)
 	}

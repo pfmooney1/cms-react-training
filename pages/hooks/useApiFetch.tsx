@@ -81,18 +81,18 @@ export function useApiFetch(userPreferences: any) {
 				const response = await fetch(url);
 				const json = await response.json();
 				const comics = json.data.results;
-				console.log(json.data);
+				// console.log(json.data);
 				let totalResults = json.data.total;
-				console.log("Successfully loaded! ");
+				// console.log("Successfully loaded! ");
 				tidyData(comics, totalResults);
-				console.log("API data has been tidied.")
-				console.log(comics);
+				// console.log("API data has been tidied.")
 				getComicsData(comics);
 			} catch (error) {
 				console.log("Error: ", error);
 			}
 		};
 		// fetchData();
+		console.log("API RAN!!!!!! ")
 	}
 	useEffect(() => {
 		fetchAndHandleData();
